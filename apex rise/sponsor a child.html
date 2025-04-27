@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Rise | Sponsor a Child</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --primary-dark: #3a5a8a;
+            --primary-light: #e8f0fe;
+            --secondary: #ff914d;
+            --secondary-dark: #e67e3e;
+            --secondary-light: #fff0e6;
+            --accent: #ff4757;
+            --dark: #2c3e50;
+            --text-dark: #34495e;
+            --text-light: #7f8c8d;
+            --light-gray: #f8f9fa;
+            --gray: #e9ecef;
+            --border-color: #e0e0e0;
+            --border-radius: 8px;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        body {
+            background-color: #fafafa;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 8px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 28px;
+        }
+        
+        nav ul li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        nav ul li a.active:after {
+            width: 100%;
+        }
+        
+        .btn {
+            padding: 11px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-block;
+            font-size: 15px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(74, 111, 165, 0.3);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 8px 20px rgba(74, 111, 165, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 145, 77, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(255, 145, 77, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-outline {
+            background-color: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.9), rgba(58, 90, 138, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .card-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 0;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .program-card {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .program-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .program-content {
+            padding: 20px;
+            background-color: white;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .program-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .program-description {
+            color: var(--text-light);
+            font-size: 15px;
+            margin-bottom: 15px;
+            flex: 1;
+        }
+        
+        .program-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .program-features {
+            margin: 15px 0;
+        }
+        
+        .program-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .program-feature i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .program-actions {
+            margin-top: auto;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .sponsor-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .sponsor-option {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .sponsor-option:hover {
+            transform: translateY(-5px);
+        }
+        
+        .sponsor-option-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+            color: var(--primary);
+        }
+        
+        .sponsor-option-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .sponsor-option-price {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .sponsor-option-price span {
+            font-size: 16px;
+            font-weight: normal;
+            color: var(--text-light);
+        }
+        
+        .sponsor-option-features {
+            margin-bottom: 25px;
+        }
+        
+        .sponsor-option-feature {
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        
+        .child-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .child-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .child-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .child-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+        }
+        
+        .child-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .child-location {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .child-content {
+            padding: 20px;
+        }
+        
+        .child-age {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+        
+        .child-age i {
+            margin-right: 8px;
+            color: var(--primary);
+        }
+        
+        .child-bio {
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .child-progress {
+            margin-bottom: 20px;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 4px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 15px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .form-check-input {
+            margin-right: 10px;
+        }
+        
+        .form-check-label {
+            color: var(--text-dark);
+        }
+        
+        .testimonial {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .testimonial:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            color: var(--primary-light);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            padding-left: 40px;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: var(--text-dark);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .testimonial-info h4 {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        
+        .testimonial-info p {
+            color: var(--text-light);
+            font-size: 13px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: var(--border-radius);
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 30px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--text-light);
+        }
+
+        .modal-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .payment-option {
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-option:hover {
+            border-color: var(--primary);
+        }
+
+        .payment-option.active {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+
+        .payment-option i {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .payment-option-label {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .donation-amount {
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .donation-amount:hover {
+            border-color: var(--primary);
+        }
+
+        .donation-amount.active {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .custom-amount {
+            margin-bottom: 20px;
+        }
+
+        .sponsor-confirmation {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .sponsor-confirmation i {
+            font-size: 60px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .sponsor-confirmation h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .sponsor-confirmation p {
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 1100px) {
+            .sponsor-options, .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sponsor-options, .footer-content, .grid-3, .grid-2, .payment-options, .donation-amounts {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="manjuar.html" class="logo">
+                    <i class="fas fa-mountain"></i>
+                    Apex Rise
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="manjuar.html">Home</a></li>
+                        <li><a href="program.html">Programs</a></li>
+                        <li><a href="our approach.html">Our Approach</a></li>
+                        <li><a href="success story.html">Success Stories</a></li>
+                        <li><a href="about us.html">About Us</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <a href="get involved.html" class="btn btn-primary">
+                        <i class="fas fa-hands-helping"></i> Get Involved
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Sponsor a Child's Transformation</h1>
+            <p>Your sponsorship provides a village child with life-changing confidence-building programs, mentorship, and opportunities to rise above limitations.</p>
+            <div>
+                <a href="#sponsor-now" class="btn btn-secondary">Sponsor Now</a>
+                <a href="#meet-children" class="btn btn-outline" style="color: white; border-color: white;">Meet the Children</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>How Child Sponsorship Works</h2>
+                <p>Your monthly contribution creates a direct impact in a child's life, helping them develop confidence and skills for a brighter future.</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-body" style="text-align: center;">
+                        <div style="width: 80px; height: 80px; background-color: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            <i class="fas fa-hand-holding-heart" style="font-size: 30px; color: var(--primary);"></i>
+                        </div>
+                        <h3 style="margin-bottom: 15px;">Choose to Sponsor</h3>
+                        <p>Select a child or let us match you with one who needs support. Sponsorship starts at just ₹1000/month.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-body" style="text-align: center;">
+                        <div style="width: 80px; height: 80px; background-color: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            <i class="fas fa-child" style="font-size: 30px; color: var(--primary);"></i>
+                        </div>
+                        <h3 style="margin-bottom: 15px;">Your Child Joins Programs</h3>
+                        <p>Your sponsored child receives confidence-building training, mentorship, and personal development opportunities.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-body" style="text-align: center;">
+                        <div style="width: 80px; height: 80px; background-color: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            <i class="fas fa-graduation-cap" style="font-size: 30px; color: var(--primary);"></i>
+                        </div>
+                        <h3 style="margin-bottom: 15px;">Watch Them Grow</h3>
+                        <p>Receive updates on your child's progress and see how your support transforms their life and community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sponsorship Options</h2>
+                <p>Choose the sponsorship level that fits your budget and desired impact.</p>
+            </div>
+            
+            <div class="sponsor-options">
+                <div class="sponsor-option">
+                    <div class="sponsor-option-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="sponsor-option-title">Basic Support</h3>
+                    <div class="sponsor-option-price">₹1000<span>/month</span></div>
+                    <div class="sponsor-option-features">
+                        <div class="sponsor-option-feature">Covers program participation</div>
+                        <div class="sponsor-option-feature">Quarterly progress reports</div>
+                        <div class="sponsor-option-feature">Annual photo updates</div>
+                    </div>
+                    <a href="#sponsor-now" class="btn btn-outline">Choose This</a>
+                </div>
+                
+                <div class="sponsor-option" style="border: 2px solid var(--primary);">
+                    <div class="sponsor-option-icon" style="background-color: var(--primary); color: white;">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="sponsor-option-title">Full Sponsorship</h3>
+                    <div class="sponsor-option-price">₹2500<span>/month</span></div>
+                    <div class="sponsor-option-features">
+                        <div class="sponsor-option-feature">All Basic Support benefits</div>
+                        <div class="sponsor-option-feature">Monthly updates & letters</div>
+                        <div class="sponsor-option-feature">Educational materials</div>
+                        <div class="sponsor-option-feature">1:1 mentorship</div>
+                    </div>
+                    <a href="#sponsor-now" class="btn btn-primary">Choose This</a>
+                </div>
+                
+                <div class="sponsor-option">
+                    <div class="sponsor-option-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="sponsor-option-title">Premium Support</h3>
+                    <div class="sponsor-option-price">₹5000<span>/month</span></div>
+                    <div class="sponsor-option-features">
+                        <div class="sponsor-option-feature">All Full Sponsorship benefits</div>
+                        <div class="sponsor-option-feature">Video calls with your child</div>
+                        <div class="sponsor-option-feature">Annual meeting opportunity</div>
+                        <div class="sponsor-option-feature">Leadership training</div>
+                    </div>
+                    <a href="#sponsor-now" class="btn btn-outline">Choose This</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <p>Or sponsor with a one-time donation of any amount</p>
+                <a href="#sponsor-now" class="btn btn-secondary">Make a Donation</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="meet-children">
+        <div class="container">
+            <div class="section-title">
+                <h2>Children Waiting for Sponsors</h2>
+                <p>These bright children are ready to begin their transformation journey with your support.</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="child-card">
+                    <div class="child-image" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');">
+                        <div class="child-image-overlay">
+                            <div class="child-name">Rahul K.</div>
+                            <div class="child-location">Age 12 • Bihar</div>
+                        </div>
+                    </div>
+                    <div class="child-content">
+                        <div class="child-age">
+                            <i class="fas fa-birthday-cake"></i>
+                            <span>12 years old</span>
+                        </div>
+                        <div class="child-bio">
+                            Rahul dreams of becoming a teacher but struggles with confidence in school. He needs support to develop his communication skills and self-esteem.
+                        </div>
+                        <div class="child-progress">
+                            <div class="progress-label">
+                                <span>Sponsorship Progress</span>
+                                <span>25%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 25%;"></div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary" style="width: 100%;" onclick="openSponsorModal('Rahul K.')">Sponsor Rahul</a>
+                    </div>
+                </div>
+                
+                <div class="child-card">
+                    <div class="child-image" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                        <div class="child-image-overlay">
+                            <div class="child-name">Priya M.</div>
+                            <div class="child-location">Age 14 • Odisha</div>
+                        </div>
+                    </div>
+                    <div class="child-content">
+                        <div class="child-age">
+                            <i class="fas fa-birthday-cake"></i>
+                            <span>14 years old</span>
+                        </div>
+                        <div class="child-bio">
+                            Priya is a talented artist but lacks opportunities to develop her skills. She would benefit from creative expression programs and mentorship.
+                        </div>
+                        <div class="child-progress">
+                            <div class="progress-label">
+                                <span>Sponsorship Progress</span>
+                                <span>40%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary" style="width: 100%;" onclick="openSponsorModal('Priya M.')">Sponsor Priya</a>
+                    </div>
+                </div>
+                
+                <div class="child-card">
+                    <div class="child-image" style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');">
+                        <div class="child-image-overlay">
+                            <div class="child-name">Anjali S.</div>
+                            <div class="child-location">Age 10 • Rajasthan</div>
+                        </div>
+                    </div>
+                    <div class="child-content">
+                        <div class="child-age">
+                            <i class="fas fa-birthday-cake"></i>
+                            <span>10 years old</span>
+                        </div>
+                        <div class="child-bio">
+                            Anjali is shy but has great potential. She needs early intervention to build confidence before entering her teenage years.
+                        </div>
+                        <div class="child-progress">
+                            <div class="progress-label">
+                                <span>Sponsorship Progress</span>
+                                <span>15%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 15%;"></div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary" style="width: 100%;" onclick="openSponsorModal('Anjali S.')">Sponsor Anjali</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="all children.html" class="btn btn-outline">View All Children</a>
+                <a href="match me.html" class="btn btn-primary">Match Me With a Child</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sponsor Testimonials</h2>
+                <p>Hear from sponsors whose lives have been changed through this journey.</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        Sponsoring Priya has been one of the most rewarding experiences of my life. Seeing her grow from a shy girl to a confident young woman pursuing her dreams is priceless.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SM</div>
+                        <div class="testimonial-info">
+                            <h4>Sunita M.</h4>
+                            <p>Sponsor for 3 years</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        The updates I receive about Rahul's progress remind me why sponsorship matters. His journey inspires me as much as my support helps him.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AK</div>
+                        <div class="testimonial-info">
+                            <h4>Arjun K.</h4>
+                            <p>Sponsor for 1 year</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        I started sponsoring to help a child, but didn't realize how much it would change my own perspective. The connection we've built transcends financial support.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">NP</div>
+                        <div class="testimonial-info">
+                            <h4>Neha P.</h4>
+                            <p>Sponsor for 2 years</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="sponsor-now">
+        <div class="container">
+            <div class="grid-2">
+                <div>
+                    <h2 style="font-size: 32px; margin-bottom: 20px;">Ready to Change a Life?</h2>
+                    <p style="margin-bottom: 20px;">Your sponsorship provides more than just financial support - it gives a child hope, confidence, and the tools to create a better future.</p>
+                    <p style="margin-bottom: 30px;">Complete the form to begin your sponsorship journey today. Our team will match you with a child and guide you through the process.</p>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Sponsorship Benefits</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul style="list-style-type: none;">
+                                <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                                    <i class="fas fa-check" style="color: var(--primary); margin-right: 10px; margin-top: 3px;"></i>
+                                    <span>Regular updates on your child's progress</span>
+                                </li>
+                                <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                                    <i class="fas fa-check" style="color: var(--primary); margin-right: 10px; margin-top: 3px;"></i>
+                                    <span>Opportunity to exchange letters (translations provided)</span>
+                                </li>
+                                <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                                    <i class="fas fa-check" style="color: var(--primary); margin-right: 10px; margin-top: 3px;"></i>
+                                    <span>Annual progress report with photos</span>
+                                </li>
+                                <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                                    <i class="fas fa-check" style="color: var(--primary); margin-right: 10px; margin-top: 3px;"></i>
+                                    <span>Satisfaction of knowing you're changing a life</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start;">
+                                    <i class="fas fa-check" style="color: var(--primary); margin-right: 10px; margin-top: 3px;"></i>
+                                    <span>Tax-deductible contribution (in India)</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Start Your Sponsorship</h3>
+                        </div>
+                        <div class="card-body">
+                            <form id="sponsorForm">
+                                <div class="form-group">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Sponsorship Level</label>
+                                    <select class="form-control" required>
+                                        <option value="">Select an option</option>
+                                        <option value="basic">Basic Support - ₹1000/month</option>
+                                        <option value="full">Full Sponsorship - ₹2500/month</option>
+                                        <option value="premium">Premium Support - ₹5000/month</option>
+                                        <option value="custom">Custom Amount</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Would you like to select a specific child?</label>
+                                    <select class="form-control">
+                                        <option value="no">No, match me with a child</option>
+                                        <option value="rahul">Rahul K. (Age 12, Bihar)</option>
+                                        <option value="priya">Priya M. (Age 14, Odisha)</option>
+                                        <option value="anjali">Anjali S. (Age 10, Rajasthan)</option>
+                                        <option value="other">Other (I'll specify later)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="terms" required>
+                                    <label class="form-check-label" for="terms">I agree to the <a href="terms.html">Terms of Sponsorship</a></label>
+                                </div>
+                                
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="updates">
+                                    <label class="form-check-label" for="updates">I'd like to receive updates about Apex Rise's work</label>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                                    Continue to Payment
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <h2>Other Ways to Support</h2>
+            <p>Not ready for monthly sponsorship? Consider these alternatives to make a difference.</p>
+            <div>
+                <a href="donate.html" class="btn btn-secondary">Make a Donation</a>
+                <a href="volunteer.html" class="btn btn-outline" style="color: white; border-color: white;">Become a Volunteer</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Apex Rise</h3>
+                    <p style="color: #bdc3c7; margin-bottom: 20px;">Empowering village children with confidence and emotional resilience to face society without fear.</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="confidence builders.html">Confidence Building</a></li>
+                        <li><a href="future leaders.html">Leadership Development</a></li>
+                        <li><a href="digital empowerment.html">Digital Empowerment</a></li>
+                        <li><a href="parent workshop.html">Parent Workshops</a></li>
+                        <li><a href="teacher taining.html">Teacher Training</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="success story.html">Our Story</a></li>
+                        <li><a href="our approach.html">Our Approach</a></li>
+                        <li><a href="impact.html">Impact</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="sponsor.html">Sponsor a Child</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="partner.html">Partner With Us</a></li>
+                        <li><a href="contact us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Apex Rise. All rights reserved. | Empowering rural India one child at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sponsor Modal -->
+    <div class="modal" id="sponsorModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeSponsorModal()">&times;</button>
+            <div id="sponsorFormStep1">
+                <h3 class="modal-title">Sponsor <span id="childName"></span></h3>
+                
+                <div class="form-group">
+                    <label class="form-label">Sponsorship Level</label>
+                    <div class="payment-options">
+                        <div class="payment-option active" onclick="selectSponsorOption(this, 'basic')">
+                            <i class="fas fa-seedling"></i>
+                            <div class="payment-option-label">Basic Support</div>
+                            <div>₹1000/month</div>
+                        </div>
+                        <div class="payment-option" onclick="selectSponsorOption(this, 'full')">
+                            <i class="fas fa-heart"></i>
+                            <div class="payment-option-label">Full Sponsorship</div>
+                            <div>₹2500/month</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Payment Method</label>
+                    <div class="payment-options">
+                        <div class="payment-option active" onclick="selectPaymentMethod(this, 'credit')">
+                            <i class="fas fa-credit-card"></i>
+                            <div class="payment-option-label">Credit/Debit Card</div>
+                        </div>
+                        <div class="payment-option" onclick="selectPaymentMethod(this, 'upi')">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div class="payment-option-label">UPI</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Donation Amount (₹)</label>
+                    <div class="donation-amounts">
+                        <div class="donation-amount active" onclick="selectDonationAmount(this, '1000')">1000</div>
+                        <div class="donation-amount" onclick="selectDonationAmount(this, '2500')">2500</div>
+                        <div class="donation-amount" onclick="selectDonationAmount(this, '5000')">5000</div>
+                    </div>
+                    <div class="custom-amount">
+                        <input type="number" class="form-control" placeholder="Or enter custom amount">
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" style="width: 100%;" onclick="showSponsorFormStep2()">Continue</button>
+            </div>
+            
+            <div id="sponsorFormStep2" style="display: none;">
+                <h3 class="modal-title">Complete Your Sponsorship</h3>
+                
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Address</label>
+                    <textarea class="form-control" rows="3"></textarea>
+                </div>
+                
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="modalTerms" required>
+                    <label class="form-check-label" for="modalTerms">I agree to the <a href="terms.html">Terms of Sponsorship</a></label>
+                </div>
+                
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="modalUpdates">
+                    <label class="form-check-label" for="modalUpdates">I'd like to receive updates about Apex Rise's work</label>
+                </div>
+                
+                <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="completeSponsorship()">
+                    Complete Sponsorship
+                </button>
+            </div>
+            
+            <div id="sponsorConfirmation" style="display: none;">
+                <div class="sponsor-confirmation">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Thank You for Your Sponsorship!</h3>
+                    <p>Your support will change <span id="confirmedChildName"></span>'s life. We've sent confirmation details to your email.</p>
+                    <p>Our team will contact you within 2 business days with more information about your sponsored child.</p>
+                    <button class="btn btn-primary" onclick="closeSponsorModal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sponsor modal functions
+        function openSponsorModal(childName) {
+            document.getElementById('childName').textContent = childName;
+            document.getElementById('sponsorModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // Reset form steps
+            document.getElementById('sponsorFormStep1').style.display = 'block';
+            document.getElementById('sponsorFormStep2').style.display = 'none';
+            document.getElementById('sponsorConfirmation').style.display = 'none';
+        }
+        
+        function closeSponsorModal() {
+            document.getElementById('sponsorModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function selectSponsorOption(element, option) {
+            document.querySelectorAll('.payment-option').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+        }
+        
+        function selectPaymentMethod(element, method) {
+            document.querySelectorAll('.payment-options:nth-of-type(2) .payment-option').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+        }
+        
+        function selectDonationAmount(element, amount) {
+            document.querySelectorAll('.donation-amount').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            document.querySelector('.custom-amount input').value = '';
+        }
+        
+        function showSponsorFormStep2() {
+            document.getElementById('sponsorFormStep1').style.display = 'none';
+            document.getElementById('sponsorFormStep2').style.display = 'block';
+        }
+        
+        function completeSponsorship() {
+            const childName = document.getElementById('childName').textContent;
+            document.getElementById('sponsorFormStep2').style.display = 'none';
+            document.getElementById('confirmedChildName').textContent = childName;
+            document.getElementById('sponsorConfirmation').style.display = 'block';
+        }
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === document.getElementById('sponsorModal')) {
+                closeSponsorModal();
+            }
+        });
+        
+        // Form submission
+        document.getElementById('sponsorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            openSponsorModal('Your Sponsored Child');
+        });
+    </script>
+</body>
+</html>

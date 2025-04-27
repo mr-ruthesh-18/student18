@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | Apex Rise</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --primary-dark: #3a5a8a;
+            --primary-light: #e8f0fe;
+            --secondary: #ff914d;
+            --secondary-dark: #e67e3e;
+            --secondary-light: #fff0e6;
+            --accent: #ff4757;
+            --dark: #2c3e50;
+            --text-dark: #34495e;
+            --text-light: #7f8c8d;
+            --light-gray: #f8f9fa;
+            --gray: #e9ecef;
+            --border-color: #e0e0e0;
+            --border-radius: 8px;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        body {
+            background-color: #fafafa;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 8px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 28px;
+        }
+        
+        nav ul li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        nav ul li a.active:after {
+            width: 100%;
+        }
+        
+        .btn {
+            padding: 11px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-block;
+            font-size: 15px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(74, 111, 165, 0.3);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 8px 20px rgba(74, 111, 165, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 145, 77, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(255, 145, 77, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-outline {
+            background-color: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.9), rgba(58, 90, 138, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Team Styles */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member-image {
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .member-social {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .team-member:hover .member-social {
+            opacity: 1;
+        }
+        
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: all 0.2s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .member-info {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .member-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .member-role {
+            color: var(--secondary-dark);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .member-bio {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .team-section {
+            position: relative;
+        }
+        
+        .team-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .team-category {
+            padding: 8px 20px;
+            border-radius: 30px;
+            background-color: var(--light-gray);
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        
+        .team-category.active, .team-category:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .advisory-board {
+            background-color: var(--light-gray);
+            padding: 60px 0;
+        }
+        
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .board-member {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .board-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .board-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: var(--primary);
+            font-size: 36px;
+            font-weight: 600;
+        }
+        
+        .board-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .board-role {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .board-org {
+            color: var(--secondary-dark);
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .join-team {
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .join-team h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .join-team p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text-light);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 1100px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="manjuar.html" class="logo">
+                    <i class="fas fa-mountain"></i>
+                    Apex Rise
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="manjuar.html">Home</a></li>
+                        <li><a href="program.html">Programs</a></li>
+                        <li><a href="our approach.html">Our Approach</a></li>
+                        <li><a href="success story.html">Success Stories</a></li>
+                        <li><a href="about us.html">About Us</a></li>
+                        <li><a href="team.html" class="active">Team</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <a href="get involved.html" class="btn btn-primary">
+                        <i class="fas fa-hands-helping"></i> Get Involved
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Meet Our Team</h1>
+            <p>The passionate individuals behind Apex Rise's mission to empower village children with confidence and emotional resilience.</p>
+        </div>
+    </section>
+    
+    <section class="section team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Leadership Team</h2>
+                <p>Dedicated professionals driving our mission forward with expertise and compassion.</p>
+            </div>
+            
+            <div class="team-categories">
+                <div class="team-category active" data-category="all">All</div>
+                <div class="team-category" data-category="leadership">Leadership</div>
+                <div class="team-category" data-category="programs">Programs</div>
+                <div class="team-category" data-category="operations">Operations</div>
+                <div class="team-category" data-category="field">Field Team</div>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member" data-categories="leadership">
+                    <div class="member-image" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');">
+                        <div class="member-social">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Rajiv Sharma</h3>
+                        <p class="member-role">Founder & CEO</p>
+                        <p class="member-bio">Former educator with 15 years experience in rural development, passionate about child psychology.</p>
+                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 14px;">Read Bio</a>
+                    </div>
+                </div>
+                
+                <div class="team-member" data-categories="leadership programs">
+                    <div class="member-image" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');">
+                        <div class="member-social">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Priya Patel</h3>
+                        <p class="member-role">Program Director</p>
+                        <p class="member-bio">Child psychologist specializing in rural education with 10+ years of field experience.</p>
+                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 14px;">Read Bio</a>
+                    </div>
+                </div>
+                
+                <div class="team-member" data-categories="leadership operations">
+                    <div class="member-image" style="background-image: url('https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');">
+                        <div class="member-social">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Amit Kumar</h3>
+                        <p class="member-role">Operations Director</p>
+                        <p class="member-bio">Social entrepreneur with expertise in scaling rural education initiatives.</p>
+                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 14px;">Read Bio</a>
+                    </div>
+                </div>
+                
+                <div class="team-member" data-categories="programs field">
+                    <div class="member-image" style="background-image: url('https://images.unsplash.com/photo-1593104547489-5cfb3839a3b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');">
+                        <div class="member-social">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Sunita Devi</h3>
+                        <p class="member-role">Head of Field Training</p>
+                        <p class="member-bio">Former village school teacher who developed our core confidence-building curriculum.</p>
+                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 14px;">Read Bio</a>
+                    </div>
+                </div>
+                
+                <div class="team-member" data-categories="programs">
+                    <div class="member-image" style="background-image: url('https://images.unsplash.com/photo-1542190891-2093d38760f2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');">
+                        <div class="member-social">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Arjun Mehta</h3>
+                        <p class="member-role">Digital Programs Lead</p>
+                        <p class="member-bio">Tech educator bridging the digital confidence gap for rural students.</p>
+                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 14px;">Read Bio</a>
+                    </div>
+                </div>
+                
+                <div class="team-member" data-categories="operations">
+                    <div class="member-image" style="background-image: url('https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');">
+                        <div class="member-social">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">Neha Gupta</h3>
+                        <p class="member-role">Partnerships Manager</p>
+                        <p class="member-bio">Connects Apex Rise with organizations to expand our impact across India.</p>
+                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 14px;">Read Bio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section advisory-board">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Advisory Board</h2>
+                <p>Esteemed professionals guiding our strategic direction and impact.</p>
+            </div>
+            
+            <div class="board-grid">
+                <div class="board-member">
+                    <div class="board-avatar">DR</div>
+                    <h3 class="board-name">Dr. Rekha Desai</h3>
+                    <p class="board-role">Child Psychologist</p>
+                    <p class="board-org">National Institute of Mental Health</p>
+                </div>
+                
+                <div class="board-member">
+                    <div class="board-avatar">AS</div>
+                    <h3 class="board-name">Anil Sharma</h3>
+                    <p class="board-role">Education Reform Expert</p>
+                    <p class="board-org">Ministry of Education</p>
+                </div>
+                
+                <div class="board-member">
+                    <div class="board-avatar">PM</div>
+                    <h3 class="board-name">Priyanka Malhotra</h3>
+                    <p class="board-role">Social Entrepreneur</p>
+                    <p class="board-org">Rural Innovation Foundation</p>
+                </div>
+                
+                <div class="board-member">
+                    <div class="board-avatar">VK</div>
+                    <h3 class="board-name">Vikram Kapoor</h3>
+                    <p class="board-role">Technology for Good</p>
+                    <p class="board-org">Tech4Change Initiative</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section join-team">
+        <div class="container">
+            <h2>Join Our Team</h2>
+            <p>We're always looking for passionate individuals to join us in empowering village children. If you share our vision, we'd love to hear from you.</p>
+            <a href="careers.html" class="btn btn-primary">View Open Positions</a>
+            <a href="volunteer.html" class="btn btn-outline">Volunteer Opportunities</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Apex Rise</h3>
+                    <p style="color: #bdc3c7; margin-bottom: 20px;">Empowering village children with confidence and emotional resilience to face society without fear.</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="confidence builders.html">Confidence Builders</a></li>
+                        <li><a href="future leaders.html">Future Leaders</a></li>
+                        <li><a href="digital confidence.html">Digital Confidence</a></li>
+                        <li><a href="parent workshop.html">Parent Workshops</a></li>
+                        <li><a href="teacher taining.html">Teacher Training</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="our story.html">Our Story</a></li>
+                        <li><a href="our approach.html">Our Approach</a></li>
+                        <li><a href="impact.html">Impact</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="partner.html">Partner With Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Apex Rise. All rights reserved. | Empowering rural India one child at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Team category filtering
+        document.querySelectorAll('.team-category').forEach(category => {
+            category.addEventListener('click', function() {
+                // Update active category
+                document.querySelectorAll('.team-category').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                const teamMembers = document.querySelectorAll('.team-member');
+                
+                teamMembers.forEach(member => {
+                    if (category === 'all' || member.getAttribute('data-categories').includes(category)) {
+                        member.style.display = 'block';
+                    } else {
+                        member.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

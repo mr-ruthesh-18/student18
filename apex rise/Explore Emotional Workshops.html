@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotional Workshops | Apex Rise - Emotional Empowerment for Village Children</title>
+    <style>
+        /* All previous CSS from our-approach.html */
+        /* Adding specific workshop styles */
+        .workshop-hero {
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.9), rgba(58, 90, 138, 0.9)), url('https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .workshop-components {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .component-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .component-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .component-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--secondary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--secondary-dark);
+            font-size: 32px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            padding: 20px 40px;
+            margin: 20px 0;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 25px;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .timeline-item:nth-child(1):before { content: '1'; }
+        .timeline-item:nth-child(2):before { content: '2'; }
+        .timeline-item:nth-child(3):before { content: '3'; }
+        .timeline-item:nth-child(4):before { content: '4'; }
+
+        @media (max-width: 768px) {
+            .timeline-item:before {
+                left: -10px;
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="manjuar.html" class="logo">
+                    <i class="fas fa-mountain"></i>
+                    Apex Rise
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="manjuar.html">Home</a></li>
+                        <li><a href="program.html">Programs</a></li>
+                        <li><a href="our-approach.html" class="active">Our Approach</a></li>
+                        <li><a href="success story.html">Success Stories</a></li>
+                        <li><a href="about us.html">About Us</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <a href="get involved.html" class="btn btn-primary">
+                        <i class="fas fa-hands-helping"></i> Get Involved
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="workshop-hero">
+        <div class="container">
+            <h1>Emotional Intelligence Workshops</h1>
+            <p>Transformative sessions helping children understand, express, and manage emotions effectively</p>
+            <div style="margin-top: 30px;">
+                <a href="#schedule" class="btn btn-secondary">View Schedule</a>
+                <a href="#register" class="btn btn-outline" style="color: white; border-color: white;">Register Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Workshop Components</h2>
+                <p>Our comprehensive curriculum addresses all aspects of emotional development</p>
+            </div>
+            
+            <div class="workshop-components">
+                <div class="component-card">
+                    <div class="component-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Emotional Vocabulary</h3>
+                    <p>Teaching children to identify and name 40+ emotions through interactive games and role-playing</p>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Empathy Building</h3>
+                    <p>Group activities that foster understanding of different perspectives and compassionate responses</p>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Mindfulness Practice</h3>
+                    <p>Simple meditation and breathing techniques for emotional regulation and stress management</p>
+                </div>
+                
+                <div class="component-card">
+                    <div class="component-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Conflict Resolution</h3>
+                    <p>Practical strategies for resolving disagreements while maintaining emotional balance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Workshop Structure</h2>
+                <p>12-week program with progressive learning modules</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Foundation Phase (Weeks 1-4)</h3>
+                    <p>Emotion identification, basic regulation techniques, and trust-building exercises</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Development Phase (Weeks 5-8)</h3>
+                    <p>Advanced emotional management, empathy development, and group collaboration</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Application Phase (Weeks 9-11)</h3>
+                    <p>Real-world scenarios, conflict resolution practice, and community projects</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3>Celebration Phase (Week 12)</h3>
+                    <p>Graduation ceremony, family participation, and ongoing support planning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="schedule">
+        <div class="container">
+            <div class="section-title">
+                <h2>Upcoming Workshops</h2>
+                <p>Join our next session starting in your community</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Rural Tamil Nadu</h4>
+                        <span class="btn btn-primary">15 Seats Left</span>
+                    </div>
+                    <div class="card-body">
+                        <p><i class="fas fa-calendar-alt"></i> Starts: July 15, 2024</p>
+                        <p><i class="fas fa-clock"></i> Every Saturday 10 AM - 1 PM</p>
+                        <a href="#register" class="btn btn-secondary btn-block">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Uttar Pradesh</h4>
+                        <span class="btn btn-primary">8 Seats Left</span>
+                    </div>
+                    <div class="card-body">
+                        <p><i class="fas fa-calendar-alt"></i> Starts: August 1, 2024</p>
+                        <p><i class="fas fa-clock"></i> Every Sunday 2 PM - 5 PM</p>
+                        <a href="#register" class="btn btn-secondary btn-block">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Online Session</h4>
+                        <span class="btn btn-primary">Open Enrollment</span>
+                    </div>
+                    <div class="card-body">
+                        <p><i class="fas fa-calendar-alt"></i> Rolling Admissions</p>
+                        <p><i class="fas fa-clock"></i> Flexible Timing</p>
+                        <a href="#register" class="btn btn-secondary btn-block">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include existing Testimonial Section from approach page -->
+    <!-- Include existing CTA Section from approach page -->
+    <!-- Include existing Footer from approach page -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Programs | Apex Rise - Emotional Empowerment for Village Children</title>
+    <style>
+        /* All previous CSS from our-approach.html */
+        /* Additional specific styles for skill programs page */
+        .programs-hero {
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.9), rgba(58, 90, 138, 0.9)), url('https://images.unsplash.com/photo-1584697964358-3e14ca57658b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .program-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+        }
+
+        .program-details {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .program-highlight {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .program-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .benefit-card {
+            background: var(--primary-light);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="manjuar.html" class="logo">
+                    <i class="fas fa-mountain"></i>
+                    Apex Rise
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="manjuar.html">Home</a></li>
+                        <li><a href="program.html">Programs</a></li>
+                        <li><a href="our-approach.html">Our Approach</a></li>
+                        <li><a href="success story.html">Success Stories</a></li>
+                        <li><a href="about us.html">About Us</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <a href="get involved.html" class="btn btn-primary">
+                        <i class="fas fa-hands-helping"></i> Get Involved
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="programs-hero">
+        <div class="container">
+            <h1>Skill Development Programs</h1>
+            <p>Equipping village children with essential 21st-century skills through practical, hands-on learning experiences</p>
+            <div class="program-filter">
+                <button class="filter-btn active" data-filter="all">All Programs</button>
+                <button class="filter-btn" data-filter="communication">Communication</button>
+                <button class="filter-btn" data-filter="leadership">Leadership</button>
+                <button class="filter-btn" data-filter="digital">Digital Skills</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Core Skill Programs</h2>
+                <p>Designed to build practical competencies while boosting confidence and self-expression</p>
+            </div>
+
+            <div class="grid-3">
+                <!-- Communication Skills Program -->
+                <div class="program-card" data-category="communication">
+                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="program-content">
+                        <div class="program-meta">
+                            <span>Age 10-16</span>
+                            <span>12 Weeks</span>
+                        </div>
+                        <h3 class="program-title">Confident Communication</h3>
+                        <p class="program-description">Master public speaking, active listening, and expressive writing through interactive workshops</p>
+                        <a href="#" class="btn btn-outline">Program Details</a>
+                    </div>
+                </div>
+
+                <!-- Leadership Program -->
+                <div class="program-card" data-category="leadership">
+                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="program-content">
+                        <div class="program-meta">
+                            <span>Age 12-18</span>
+                            <span>16 Weeks</span>
+                        </div>
+                        <h3 class="program-title">Young Leaders Program</h3>
+                        <p class="program-description">Develop decision-making, teamwork, and community leadership skills through practical projects</p>
+                        <a href="#" class="btn btn-outline">Program Details</a>
+                    </div>
+                </div>
+
+                <!-- Digital Skills Program -->
+                <div class="program-card" data-category="digital">
+                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="program-content">
+                        <div class="program-meta">
+                            <span>Age 14-20</span>
+                            <span>24 Weeks</span>
+                        </div>
+                        <h3 class="program-title">Digital Confidence</h3>
+                        <p class="program-description">Build essential computer skills, digital literacy, and online safety awareness</p>
+                        <a href="#" class="btn btn-outline">Program Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Program Highlights</h2>
+                <p>What makes our skill development programs uniquely effective</p>
+            </div>
+
+            <div class="program-highlight">
+                <div>
+                    <h3>Hands-On Learning Approach</h3>
+                    <p>Our programs emphasize learning by doing through:</p>
+                    <ul class="benefit-list">
+                        <li>Real-world community projects</li>
+                        <li>Interactive simulations</li>
+                        <li>Peer-to-peer mentoring</li>
+                        <li>Practical skill challenges</li>
+                    </ul>
+                </div>
+                <div class="program-details">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>85%</h3>
+                            <p>Practical Application</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>1:5</h3>
+                            <p>Mentor to Student Ratio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Program Benefits</h2>
+                <p>Long-term advantages our participants gain through skill development</p>
+            </div>
+
+            <div class="program-benefits">
+                <div class="benefit-card">
+                    <i class="fas fa-comments fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
+                    <h4>Improved Communication</h4>
+                    <p>Express ideas clearly in various social and professional situations</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-lightbulb fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
+                    <h4>Critical Thinking</h4>
+                    <p>Develop problem-solving and decision-making capabilities</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-network-wired fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
+                    <h4>Digital Literacy</h4>
+                    <p>Navigate technology confidently and safely</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-hands-helping fa-2x" style="color: var(--primary); margin-bottom: 15px;"></i>
+                    <h4>Team Collaboration</h4>
+                    <p>Work effectively in group settings and lead teams</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Start Your Skill Development Journey</h2>
+            <p>Enroll in our programs or bring them to your community</p>
+            <div>
+                <a href="enroll.html" class="btn btn-secondary">Enroll Now</a>
+                <a href="contact us.html" class="btn btn-outline" style="color: white; border-color: white;">Request Information</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <!-- Same footer as our-approach.html -->
+    </footer>
+
+    <script>
+        // Filter functionality for programs
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const programCards = document.querySelectorAll('.program-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const filter = btn.dataset.filter;
+                    
+                    // Filter programs
+                    programCards.forEach(card => {
+                        if(filter === 'all' || card.dataset.category === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Same head section as other pages -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact Report | Apex Rise - Emotional Empowerment for Village Children</title>
+    <style>
+        /* All existing styles from our-approach.html */
+        /* Add these new styles for the report page */
+        
+        .report-hero {
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.9), rgba(58, 90, 138, 0.9)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .report-details {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .report-highlight {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .download-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 100px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 15px;
+        }
+
+        .report-chapters {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .chapter-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .chapter-card h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .report-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .report-chapters {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <!-- Same header as our-approach.html -->
+        <div class="container">
+            <div class="header-content">
+                <a href="manjuar.html" class="logo">
+                    <i class="fas fa-mountain"></i>
+                    Apex Rise
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="manjuar.html">Home</a></li>
+                        <li><a href="program.html">Programs</a></li>
+                        <li><a href="our-approach.html">Our Approach</a></li>
+                        <li><a href="success story.html">Success Stories</a></li>
+                        <li><a href="about us.html">About Us</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <a href="get involved.html" class="btn btn-primary">
+                        <i class="fas fa-hands-helping"></i> Get Involved
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="report-hero">
+        <div class="container">
+            <h1>2023 Annual Impact Report</h1>
+            <p>Discover the transformative results of our emotional empowerment programs across rural India</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="report-details">
+                <div>
+                    <div class="report-highlight">
+                        <h2>Key Findings at a Glance</h2>
+                        <p>Our 2023 report reveals significant progress in emotional development and community engagement metrics. This comprehensive document includes:</p>
+                        
+                        <div class="report-chapters">
+                            <div class="chapter-card">
+                                <h4>📊 5-Year Trends</h4>
+                                <p>Longitudinal data showing sustained impact across multiple cohorts</p>
+                            </div>
+                            <div class="chapter-card">
+                                <h4>🎯 Program Efficacy</h4>
+                                <p>Detailed analysis of different intervention strategies</p>
+                            </div>
+                            <div class="chapter-card">
+                                <h4>🌱 Community Impact</h4>
+                                <p>Case studies showing ripple effects in villages</p>
+                            </div>
+                            <div class="chapter-card">
+                                <h4>📈 Future Projections</h4>
+                                <p>Roadmap for scaling our proven methodology</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="report-highlight">
+                        <h2>Featured Case Study</h2>
+                        <div class="grid-2" style="gap: 20px; align-items: center;">
+                            <div>
+                                <h3>Rajasthan Village Transformation</h3>
+                                <p>How 120 children became community leaders through our program. See before/after metrics and personal stories.</p>
+                            </div>
+                            <div style="background-image: url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); 
+                                    height: 200px; border-radius: var(--border-radius); background-size: cover;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="download-form">
+                    <h3 style="margin-bottom: 25px;">Get the Full Report</h3>
+                    <form id="downloadForm" onsubmit="handleDownload(event)">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Organization</label>
+                            <input type="text">
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-download"></i> Download Report (PDF)
+                        </button>
+                    </form>
+                    <p style="font-size: 12px; color: var(--text-light); margin-top: 15px;">
+                        By downloading, you agree to receive occasional updates about our work
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Our Impact Matters</h2>
+                <p>Key statistics from our latest findings</p>
+            </div>
+            
+            <div class="impact-metrics">
+                <div class="impact-card">
+                    <div class="impact-number">150+</div>
+                    <div class="impact-label">Villages Reached</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-number">10K+</div>
+                    <div class="impact-label">Children Empowered</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-number">85%</div>
+                    <div class="impact-label">Retention Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Same footer as our-approach.html -->
+    <footer>
+        <div class="container">
+            <!-- Footer content from our-approach.html -->
+        </div>
+    </footer>
+
+    <script>
+        function handleDownload(e) {
+            e.preventDefault();
+            const form = e.target;
+            if (form.checkValidity()) {
+                // Simulate download
+                const link = document.createElement('a');
+                link.href = 'path/to/apex-rise-impact-report-2023.pdf';
+                link.download = 'apex-rise-impact-report-2023.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // You can add analytics tracking here
+                alert('Thank you for downloading! Check your email for updates.');
+            }
+        }
+
+        // Add any other existing scripts from our-approach.html
+    </script>
+</body>
+</html>

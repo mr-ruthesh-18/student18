@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Programs | Apex Rise - Empowering Village Communities</title>
+    <style>
+        /* All previous CSS from our-approach.html */
+        /* Adding specific styles for community programs page */
+        .program-highlight {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .program-highlight:hover {
+            transform: translateY(-5px);
+        }
+
+        .program-phase {
+            border-left: 4px solid var(--secondary);
+            padding-left: 20px;
+            margin: 30px 0;
+        }
+
+        .community-testimonial {
+            background-color: var(--primary-light);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            position: relative;
+        }
+
+        .community-stat {
+            text-align: center;
+            padding: 30px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="manjuar.html" class="logo">
+                    <i class="fas fa-mountain"></i>
+                    Apex Rise
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="manjuar.html">Home</a></li>
+                        <li><a href="program.html">Programs</a></li>
+                        <li><a href="our-approach.html">Our Approach</a></li>
+                        <li><a href="success story.html">Success Stories</a></li>
+                        <li><a href="about us.html">About Us</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <a href="get involved.html" class="btn btn-primary">
+                        <i class="fas fa-hands-helping"></i> Get Involved
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="approach-hero" style="background-image: linear-gradient(135deg, rgba(74, 111, 165, 0.9), rgba(58, 90, 138, 0.9)), url('https://images.unsplash.com/photo-1524178239883-6a833510c3bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+        <div class="container">
+            <h1>Community Empowerment Programs</h1>
+            <p>Building strong village ecosystems that sustain and amplify children's growth</p>
+            <div>
+                <a href="#programs" class="btn btn-secondary">Explore Programs</a>
+                <a href="#impact" class="btn btn-outline" style="color: white; border-color: white;">View Community Impact</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Community Initiatives</h2>
+                <p>Holistic programs that engage entire villages in sustaining children's emotional growth</p>
+            </div>
+
+            <div class="grid-3" id="programs">
+                <div class="program-highlight">
+                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); height: 200px;"></div>
+                    <div class="program-content">
+                        <div class="program-meta">
+                            <span><i class="fas fa-users"></i> Village-wide</span>
+                            <span>6-12 months</span>
+                        </div>
+                        <h3 class="program-title">Parent Empowerment Circles</h3>
+                        <p class="program-description">Monthly workshops helping parents support their children's emotional development while addressing their own growth needs.</p>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="program-highlight">
+                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); height: 200px;"></div>
+                    <div class="program-content">
+                        <div class="program-meta">
+                            <span><i class="fas fa-chalkboard-teacher"></i> Teacher Training</span>
+                            <span>Ongoing</span>
+                        </div>
+                        <h3 class="program-title">School Partnership Program</h3>
+                        <p class="program-description">Training teachers in emotional-first pedagogy and creating supportive classroom environments.</p>
+                        <a href="#" class="btn btn-outline">See Results</a>
+                    </div>
+                </div>
+
+                <div class="program-highlight">
+                    <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); height: 200px;"></div>
+                    <div class="program-content">
+                        <div class="program-meta">
+                            <span><i class="fas fa-hand-holding-heart"></i> Mentorship</span>
+                            <span>2 Year Program</span>
+                        </div>
+                        <h3 class="program-title">Village Champion Program</h3>
+                        <p class="program-description">Identifying and training local leaders to sustain empowerment efforts beyond our direct involvement.</p>
+                        <a href="#" class="btn btn-outline">Meet Champions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Program Implementation</h2>
+                <p>Our phased approach ensures sustainable community engagement</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="program-phase">
+                    <h3>Phase 1: Community Assessment</h3>
+                    <p>3-month deep dive understanding village dynamics, existing support systems, and cultural context.</p>
+                    <ul style="color: var(--text-light); margin-top: 10px; list-style: none;">
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Stakeholder interviews</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Resource mapping</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Cultural alignment</li>
+                    </ul>
+                </div>
+
+                <div class="program-phase">
+                    <h3>Phase 2: Capacity Building</h3>
+                    <p>6-12 month intensive training program for local leaders and volunteers.</p>
+                    <ul style="color: var(--text-light); margin-top: 10px; list-style: none;">
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Leadership workshops</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Emotional intelligence training</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Program management skills</li>
+                    </ul>
+                </div>
+
+                <div class="program-phase">
+                    <h3>Phase 3: Sustainable Systems</h3>
+                    <p>Ongoing support for community-led initiatives and impact monitoring.</p>
+                    <ul style="color: var(--text-light); margin-top: 10px; list-style: none;">
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Monthly check-ins</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Resource library access</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--secondary);"></i> Annual impact reviews</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="impact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Community Impact</h2>
+                <p>Measurable results from our village partnership programs</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="community-stat">
+                    <div class="impact-number">68%</div>
+                    <div class="impact-label">Increase in community-led initiatives</div>
+                </div>
+
+                <div class="community-stat">
+                    <div class="impact-number">540+</div>
+                    <div class="impact-label">Trained Community Champions</div>
+                </div>
+
+                <div class="community-stat">
+                    <div class="impact-number">2.1x</div>
+                    <div class="impact-label">More youth participating in local governance</div>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-top: 40px;">
+                <div class="community-testimonial">
+                    <div class="testimonial-content">
+                        "Our village has transformed from a place of silence to a hub of confident voices. The community programs helped us all grow together."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SK</div>
+                        <div class="testimonial-info">
+                            <h4>Sarpanch Kalpana Devi</h4>
+                            <p>Village Leader, Jharkhand</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="community-testimonial">
+                    <div class="testimonial-content">
+                        "The parent circles didn't just help my child - they helped me become a better father and community member."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AM</div>
+                        <div class="testimonial-info">
+                            <h4>Anil Mehta</h4>
+                            <p>Parent & Small Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Bring Community Programs to Your Village</h2>
+            <p>Start the conversation about sustainable emotional empowerment in your community</p>
+            <div>
+                <a href="contact us.html" class="btn btn-secondary">Request Program Info</a>
+                <a href="volunteer.html" class="btn btn-outline" style="color: white; border-color: white;">Become a Volunteer</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <!-- Same footer as our-approach.html -->
+        <!-- Include identical footer content here -->
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

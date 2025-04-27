@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Rise | How It Works</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --primary-dark: #3a5a8a;
+            --primary-light: #e8f0fe;
+            --secondary: #ff914d;
+            --secondary-dark: #e67e3e;
+            --secondary-light: #fff0e6;
+            --accent: #ff4757;
+            --dark: #2c3e50;
+            --text-dark: #34495e;
+            --text-light: #7f8c8d;
+            --light-gray: #f8f9fa;
+            --gray: #e9ecef;
+            --border-color: #e0e0e0;
+            --border-radius: 8px;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        body {
+            background-color: #fafafa;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 8px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 28px;
+        }
+        
+        nav ul li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        nav ul li a.active:after {
+            width: 100%;
+        }
+        
+        .btn {
+            padding: 11px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-block;
+            font-size: 15px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(74, 111, 165, 0.3);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 8px 20px rgba(74, 111, 165, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 145, 77, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(255, 145, 77, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-outline {
+            background-color: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.9), rgba(58, 90, 138, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .card-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 0;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .process-step {
+            display: flex;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 30px;
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-content h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .step-content p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-size: 28px;
+        }
+        
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+        }
+        
+        .testimonial {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .testimonial:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            color: var(--primary-light);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            padding-left: 40px;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: var(--text-dark);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .testimonial-info h4 {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        
+        .testimonial-info p {
+            color: var(--text-light);
+            font-size: 13px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background-color: white;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question {
+            background-color: var(--primary-light);
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 20px;
+        }
+        
+        @media (max-width: 1100px) {
+            .grid-2, .grid-3, .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .process-step {
+                flex-direction: column;
+            }
+            
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="manjuar.html" class="logo">
+                    <i class="fas fa-mountain"></i>
+                    Apex Rise
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="manjuar.html">Home</a></li>
+                        <li><a href="program.html">Programs</a></li>
+                        <li><a href="our approach.html">Our Approach</a></li>
+                        <li><a href="success story.html">Success Stories</a></li>
+                        <li><a href="about us.html">About Us</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <a href="get involved.html" class="btn btn-primary">
+                        <i class="fas fa-hands-helping"></i> Get Involved
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>How Our Programs Work</h1>
+            <p>Discover our proven process for empowering village children with confidence and resilience to face society without fear.</p>
+            <div>
+                <a href="program.html" class="btn btn-secondary">View Our Programs</a>
+                <a href="#enrollment" class="btn btn-outline" style="color: white; border-color: white;">Enrollment Process</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Proven Process</h2>
+                <p>We follow a carefully designed approach to ensure each child receives the support they need to grow and thrive.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Community Engagement</h3>
+                    <p>We begin by working closely with village leaders, schools, and parents to understand the specific needs of each community. This helps us tailor our programs to address local challenges while respecting cultural values.</p>
+                    <p>Our team conducts awareness sessions to explain the benefits of our programs and address any concerns families might have about participation.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Child Assessment</h3>
+                    <p>Each child participates in a friendly, non-threatening assessment to understand their current confidence level, communication skills, and specific challenges they face in social situations.</p>
+                    <p>This helps us place them in the most appropriate program and track their progress throughout their journey with us.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Program Placement</h3>
+                    <p>Based on the assessment, we recommend the most suitable program for each child, considering their age, needs, and personal goals.</p>
+                    <p>We offer programs for different age groups and confidence levels, from foundational courses for beginners to advanced leadership development for teens.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Interactive Learning</h3>
+                    <p>Our programs use engaging, activity-based learning methods rather than traditional lectures. Children participate in role-plays, group discussions, creative projects, and real-world challenges.</p>
+                    <p>Each session is facilitated by trained mentors who create a safe, supportive environment where children feel comfortable expressing themselves.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Progress Tracking</h3>
+                    <p>We regularly assess each child's development through observations, self-evaluations, and practical demonstrations of their new skills.</p>
+                    <p>Parents and teachers receive updates on their child's progress and suggestions for how they can support the child's growth at home and in school.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <h3>Graduation & Beyond</h3>
+                    <p>At the end of each program, children participate in a graduation ceremony where they demonstrate their new skills to family and community members.</p>
+                    <p>Graduates can join our alumni network for ongoing support, mentorship opportunities, and advanced programs to continue their personal development journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Makes Our Approach Effective</h2>
+                <p>Key features that set our programs apart and ensure lasting impact</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Child-Centered Design</h3>
+                    <p>All activities are designed specifically for village children, addressing their unique challenges while building on their strengths and cultural identity.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Small Group Learning</h3>
+                    <p>We maintain small group sizes (8-12 children) to ensure each participant gets individual attention and feels comfortable participating.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Trained Local Mentors</h3>
+                    <p>Our facilitators come from similar backgrounds as the children and undergo intensive training in child psychology and our methodology.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Family Involvement</h3>
+                    <p>We engage parents and siblings through special sessions to create a supportive home environment that reinforces what children learn.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Practical Application</h3>
+                    <p>Children immediately apply what they learn through community projects, helping them see the real-world value of their new skills.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Long-Term Support</h3>
+                    <p>Our alumni programs provide ongoing mentorship and opportunities to ensure children continue growing after completing their initial program.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="enrollment" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Enrollment Process</h2>
+                <p>How to get a child enrolled in our transformative programs</p>
+            </div>
+            
+            <div class="grid-2">
+                <div>
+                    <h3 style="font-size: 24px; margin-bottom: 20px; color: var(--dark);">For Parents & Guardians</h3>
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Check Program Availability</h3>
+                            <p>Visit our Programs page to see which programs are currently available in your area. New locations are added regularly.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Attend an Information Session</h3>
+                            <p>Join one of our free information sessions in your village to learn more about the program and meet our team.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Complete the Enrollment Form</h3>
+                            <p>Fill out a simple form with basic information about your child. Our team will contact you to schedule an assessment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Participate in Assessment</h3>
+                            <p>Bring your child for a friendly 30-minute assessment where we'll understand their needs and recommend the best program.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Begin the Program</h3>
+                            <p>Once enrolled, you'll receive a schedule and all necessary information. Most programs begin with an orientation for both parents and children.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="font-size: 24px; margin-bottom: 20px; color: var(--dark);">For Schools & Communities</h3>
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Contact Our Team</h3>
+                            <p>Reach out to discuss bringing our programs to your school or village. We'll schedule a meeting to understand your community's needs.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Organize a Community Meeting</h3>
+                            <p>We'll work with you to arrange an information session for parents, teachers, and community leaders to learn about our programs.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Identify Local Facilitators</h3>
+                            <p>We train local individuals to deliver our programs, creating employment opportunities while ensuring cultural relevance.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Set Up Program Logistics</h3>
+                            <p>We'll help arrange suitable space and timing that works for your community, whether during or after school hours.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Launch the Program</h3>
+                            <p>After enrollment and assessments, we'll begin the program with an exciting launch event for the whole community.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <a href="contact us.html" class="btn btn-primary">Contact Us About Bringing Programs to Your Community</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about our programs and how they work</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What age groups do you work with?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We offer programs for children ages 8-21, with age-appropriate content for different developmental stages. Our youngest participants join our "Little Leaders" program (ages 8-10), while teens can participate in our advanced leadership and career preparation programs.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How much do the programs cost?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Thanks to our donors and sponsors, all of our programs are completely free for participating children and their families. We believe financial barriers should never prevent a child from accessing personal development opportunities.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How long do the programs last?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Program durations vary based on the specific program and age group. Our shortest programs run for 6 weeks, while comprehensive leadership programs can last up to a year. Most foundational programs are 3-4 months long with weekly sessions.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What languages are the programs conducted in?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>All programs are conducted in the local language of each community. Our materials and facilitators are available in multiple regional languages to ensure children can fully participate and express themselves comfortably.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How do you measure the impact of your programs?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We use a combination of pre- and post-program assessments, teacher/parent feedback, and long-term tracking of participants' academic and social progress. Our most important metrics are the real-world changes we see in children's confidence, communication, and leadership in their communities.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can children with special needs participate?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! We work to accommodate children with various needs. Please contact us before enrollment so we can understand how best to support your child's participation and make any necessary adjustments to our approach.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="contact us.html" class="btn btn-primary">Have More Questions? Contact Us</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hear From Parents & Teachers</h2>
+                <p>See how our programs have made a difference in children's lives</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        My daughter used to be so shy she wouldn't even answer when relatives visited. After 3 months in the Confidence Builders program, she volunteered to give a speech at our village festival. I couldn't believe it was the same child!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SM</div>
+                        <div class="testimonial-info">
+                            <h4>Sunita M.</h4>
+                            <p>Parent, Maharashtra</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        As a teacher, I've seen remarkable changes in students who participate in Apex Rise programs. They participate more in class, take on leadership roles, and most importantly, believe in their own potential.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RP</div>
+                        <div class="testimonial-info">
+                            <h4>Rajesh P.</h4>
+                            <p>School Teacher, Uttar Pradesh</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        We brought Apex Rise to our village after seeing the transformation in children from a neighboring village. In just one year, the confidence and aspirations of our children have changed dramatically. They now dream bigger and speak with conviction.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">VK</div>
+                        <div class="testimonial-info">
+                            <h4>Vijay K.</h4>
+                            <p>Village Leader, Bihar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Begin the Journey?</h2>
+            <p>Help a child in your life develop the confidence and skills to reach their full potential.</p>
+            <div>
+                <a href="program.html" class="btn btn-secondary">Explore Programs</a>
+                <a href="contact us.html" class="btn btn-outline" style="color: white; border-color: white;">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Apex Rise</h3>
+                    <p style="color: #bdc3c7; margin-bottom: 20px;">Empowering village children with confidence and emotional resilience to face society without fear.</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="confidence builders.html">Confidence Building</a></li>
+                        <li><a href="#">Leadership Development</a></li>
+                        <li><a href="#">Digital Empowerment</a></li>
+                        <li><a href="parent workshop.html">Parent Workshops</a></li>
+                        <li><a href="teacher taining.html">Teacher Training</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="success story.html">Our Story</a></li>
+                        <li><a href="our approach.html">Our Approach</a></li>
+                        <li><a href="impact.html">Impact</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="partner.html">Partner With Us</a></li>
+                        <li><a href="start a chapter.html">Start a Chapter</a></li>
+                        <li><a href="contact us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Apex Rise. All rights reserved. | Empowering rural India one child at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle FAQ items
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+            
+            // Close other FAQs when opening one
+            if (faqItem.classList.contains('active')) {
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem && item.classList.contains('active')) {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

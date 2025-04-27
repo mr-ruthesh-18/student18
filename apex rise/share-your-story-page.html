@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Your Story | Apex Rise</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --primary-dark: #3a5a8a;
+            --primary-light: #e8f0fe;
+            --secondary: #ff914d;
+            --secondary-dark: #e67e3e;
+            --secondary-light: #fff0e6;
+            --accent: #ff4757;
+            --dark: #2c3e50;
+            --text-dark: #34495e;
+            --text-light: #7f8c8d;
+            --light-gray: #f8f9fa;
+            --gray: #e9ecef;
+            --border-color: #e0e0e0;
+            --border-radius: 8px;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        body {
+            background-color: #fafafa;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 8px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 28px;
+        }
+        
+        nav ul li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        nav ul li a.active:after {
+            width: 100%;
+        }
+        
+        .btn {
+            padding: 11px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-block;
+            font-size: 15px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(74, 111, 165, 0.3);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 8px 20px rgba(74, 111, 165, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 145, 77, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(255, 145, 77, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-outline {
+            background-color: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .hero {
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.9), rgba(58, 90, 138, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 17px;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
+            outline: none;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+        
+        .form-col {
+            flex: 1;
+            padding: 0 15px;
+            min-width: 250px;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            margin-top: 8px;
+        }
+        
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        
+        .file-upload input[type="file"] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+        
+        .file-upload-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border: 1px dashed var(--primary);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .file-upload-btn:hover {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+        }
+        
+        .file-name {
+            margin-left: 10px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        
+        .submit-btn {
+            padding: 14px 30px;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        
+        .guidelines {
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .guidelines h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .guidelines ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .guidelines ul li {
+            margin-bottom: 8px;
+        }
+        
+        .story-types {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px 20px;
+        }
+        
+        .story-type {
+            flex: 1 0 200px;
+            margin: 10px;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .story-type:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-light);
+        }
+        
+        .story-type.active {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+        
+        .story-type i {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .story-type h4 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .story-type p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        
+        .required-field::after {
+            content: '*';
+            color: var(--accent);
+            margin-left: 4px;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-40 {
+            margin-top: 40px;
+        }
+        
+        .testimonials {
+            padding: 40px 0;
+            background-color: var(--primary-light);
+            margin-top: 60px;
+            border-radius: var(--border-radius);
+        }
+        
+        .testimonial-slider {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .testimonial {
+            padding: 20px;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .testimonial-role {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+
+        @media (max-width: 1100px) {
+            .grid-2, .grid-3, .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .form-container {
+                padding: 25px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+            }
+            
+            .form-col {
+                padding: 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Merriweather:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="manjuar.html" class="logo">
+                    <i class="fas fa-mountain"></i>
+                    Apex Rise
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="manjuar.html">Home</a></li>
+                        <li><a href="program.html">Programs</a></li>
+                        <li><a href="our approach.html">Our Approach</a></li>
+                        <li><a href="success story.html">Success Stories</a></li>
+                        <li><a href="about us.html">About Us</a></li>
+                        <li><a href="login.html" onclick="showAuth()">Login</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <a href="get involved.html" class="btn btn-primary" onclick="showAuth()">
+                        <i class="fas fa-hands-helping"></i> Get Involved
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Share Your Apex Rise Journey</h1>
+            <p>Your story can inspire thousands of children across rural India. Tell us how Apex Rise helped transform your life or the life of someone you know.</p>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>How Your Story Makes a Difference</h2>
+                <p>When you share your experience, you create a ripple effect of inspiration that can help others see what's possible in their own lives.</p>
+            </div>
+            
+            <div class="guidelines">
+                <h3>Story Submission Guidelines</h3>
+                <ul>
+                    <li>Be authentic and share your genuine experience with our programs</li>
+                    <li>Include specific examples of how the program impacted your life or skills</li>
+                    <li>Consider sharing challenges you faced and how you overcame them</li>
+                    <li>Photos, videos, or artwork that complement your story are welcome</li>
+                    <li>Parents/guardians can submit stories on behalf of children under 18</li>
+                </ul>
+                <p>All submissions will be reviewed by our team. Selected stories may be featured on our website, social media, or publications. We may contact you for additional information if needed.</p>
+            </div>
+            
+            <div class="story-types">
+                <div class="story-type" onclick="selectStoryType(this, 'personal')">
+                    <i class="fas fa-user"></i>
+                    <h4>Personal Journey</h4>
+                    <p>Share how Apex Rise programs helped you develop confidence and skills</p>
+                </div>
+                <div class="story-type" onclick="selectStoryType(this, 'family')">
+                    <i class="fas fa-users"></i>
+                    <h4>Family Impact</h4>
+                    <p>Tell us how our programs benefited your child or family member</p>
+                </div>
+                <div class="story-type" onclick="selectStoryType(this, 'community')">
+                    <i class="fas fa-house-user"></i>
+                    <h4>Community Change</h4>
+                    <p>Describe how Apex Rise has transformed your village or community</p>
+                </div>
+            </div>
+            
+            <div class="form-container">
+                <form id="storyForm" onsubmit="submitStory(event)">
+                    <input type="hidden" id="storyType" name="storyType" value="personal">
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="firstName" class="required-field">First Name</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="lastName" class="required-field">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="email" class="required-field">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" name="phone">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" class="form-control" id="age" name="age" min="5" max="100">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="location">Village/City & State</label>
+                                <input type="text" class="form-control" id="location" name="location">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="program" class="required-field">Which Apex Rise Program(s) Did You Participate In?</label>
+                        <select class="form-control" id="program" name="program" required>
+                            <option value="">Select a program</option>
+                            <option value="Confidence Builders">Confidence Builders</option>
+                            <option value="Future Leaders">Future Leaders</option>
+                            <option value="Digital Confidence">Digital Confidence</option>
+                            <option value="Parent Workshops">Parent Workshops</option>
+                            <option value="Teacher Training">Teacher Training</option>
+                            <option value="Multiple Programs">Multiple Programs</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="title" class="required-field">Give Your Story a Title</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="E.g., 'How I Overcame Stage Fear'" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="story" class="required-field">Your Story</label>
+                        <textarea class="form-control" id="story" name="story" placeholder="Share your journey with us..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>What changed in your life after participating in the program?</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="changes[]" value="confidence"> Increased confidence</label>
+                            <label><input type="checkbox" name="changes[]" value="academic"> Better academic performance</label>
+                            <label><input type="checkbox" name="changes[]" value="social"> Improved social skills</label>
+                            <label><input type="checkbox" name="changes[]" value="leadership"> Developed leadership abilities</label>
+                            <label><input type="checkbox" name="changes[]" value="career"> New career/education opportunities</label>
+                            <label><input type="checkbox" name="changes[]" value="outlook"> More positive outlook on future</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quote" class="required-field">Share Your Favorite Quote About Your Experience</label>
+                        <input type="text" class="form-control" id="quote" name="quote" placeholder="A short, meaningful quote we can highlight from your story" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Upload Photos or Videos (Optional)</label>
+                        <p style="font-size: 14px; color: var(--text-light); margin-bottom: 10px;">Share images or videos that showcase your journey with Apex Rise. Max file size: 5MB</p>
+                        <div class="file-upload">
+                            <div class="file-upload-btn">
+                                <i class="fas fa-cloud-upload-alt"></i> Choose Files
+                            </div>
+                            <input type="file" id="mediaFiles" name="mediaFiles" multiple accept="image/*,video/*">
+                        </div>
+                        <span class="file-name" id="fileNames">No files selected</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" id="consent" name="consent" required> I consent to having my story and media shared on Apex Rise website, social media, and other materials.</label>
+                            <label><input type="checkbox" id="newsletter" name="newsletter"> Subscribe to the Apex Rise newsletter for updates and inspiration.</label>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-40">
+                        <button type="submit" class="btn btn-secondary submit-btn">
+                            <i class="fas fa-paper-plane"></i> Submit Your Story
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Words from Our Storytellers</h2>
+                <p>Hear from others who have shared their Apex Rise journey</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "Sharing my story with Apex Rise was empowering. It made me reflect on how far I've come and helped me realize the true impact the program had on my life."
+                    </div>
+                    <div class="testimonial-author">Priya K.</div>
+                    <div class="testimonial-role">Confidence Builders Graduate, 2022</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Apex Rise</h3>
+                    <p style="color: #bdc3c7; margin-bottom: 20px;">Empowering village children with confidence and emotional resilience to face society without fear.</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="#">Confidence Builders</a></li>
+                        <li><a href="#">Future Leaders</a></li>
+                        <li><a href="#">Digital Confidence</a></li>
+                        <li><a href="#">Parent Workshops</a></li>
+                        <li><a href="#">Teacher Training</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Our Approach</a></li>
+                        <li><a href="#">Impact</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="#">Donate</a></li>
+                        <li><a href="#">Volunteer</a></li>
+                        <li><a href="#">Partner With Us</a></li>
+                        <li><a href="#">Start a Chapter</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Apex Rise. All rights reserved. | Empowering rural India one child at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple function to show authentication modal
+        function showAuth() {
+            alert("In a real implementation, this would show the login/signup modal");
+            // This would normally show the auth modal from your main page
+            // For this standalone page, we're just showing an alert
+        }
+        
+        // Function to select story type
+        function selectStoryType(element, type) {
+            // Remove active class from all story types
+            const storyTypes = document.querySelectorAll('.story-type');
+            storyTypes.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Add active class to selected type
+            element.classList.add('active');
+            
+            // Update hidden input
+            document.getElementById('storyType').value = type;
+        }
+        
+        // Display file names when files are selected
+        document.getElementById('mediaFiles').addEventListener('change', function(e) {
+            const fileInput = e.target;
+            const fileNames = Array.from(fileInput.files).map(file => file.name).join(', ');
+            document.getElementById('fileNames').textContent = fileNames || 'No files selected';
+        });
+        
+        // Form submission handler
+        function submitStory(event) {
+            event.preventDefault();
+            
+            // In a real implementation, this would submit the form data to your server
+            // For this example, we'll just show a success message
+            alert("Thank you for sharing your story! We've received your submission and will review it shortly.");
+            
+            // Reset form
+            document.getElementById('storyForm').reset();
+            document.getElementById('fileNames').textContent = 'No files selected';
+            
+            // Remove active class from story types
+            const storyTypes = document.querySelectorAll('.story-type');
+            storyTypes.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Reset hidden input
+            document.getElementById('storyType').value = 'personal';
+        }
+    </script>
+</body>
+</html>

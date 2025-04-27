@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Leaders Program | Apex Rise</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --primary-dark: #3a5a8a;
+            --primary-light: #e8f0fe;
+            --secondary: #ff914d;
+            --secondary-dark: #e67e3e;
+            --secondary-light: #fff0e6;
+            --accent: #ff4757;
+            --dark: #2c3e50;
+            --text-dark: #34495e;
+            --text-light: #7f8c8d;
+            --light-gray: #f8f9fa;
+            --gray: #e9ecef;
+            --border-color: #e0e0e0;
+            --border-radius: 8px;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        body {
+            background-color: #fafafa;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 8px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 28px;
+        }
+        
+        nav ul li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        nav ul li a.active:after {
+            width: 100%;
+        }
+        
+        .btn {
+            padding: 11px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-block;
+            font-size: 15px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(74, 111, 165, 0.3);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 8px 20px rgba(74, 111, 165, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 145, 77, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(255, 145, 77, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-outline {
+            background-color: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.9), rgba(58, 90, 138, 0.9)), url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .card-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 0;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .program-highlight {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            background-color: white;
+        }
+        
+        .program-highlight:hover {
+            transform: translateY(-5px);
+        }
+        
+        .program-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .program-content {
+            padding: 30px;
+        }
+        
+        .program-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .program-subtitle {
+            font-size: 18px;
+            color: var(--secondary-dark);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .program-description {
+            color: var(--text-dark);
+            font-size: 16px;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .program-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .program-details {
+            margin-top: 30px;
+        }
+        
+        .detail-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .detail-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            color: var(--primary);
+            font-size: 20px;
+        }
+        
+        .detail-content h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        
+        .detail-content p {
+            color: var(--text-light);
+        }
+        
+        .benefits-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .benefit-item {
+            background-color: var(--light-gray);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .benefit-icon {
+            color: var(--secondary);
+            font-size: 20px;
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+        
+        .benefit-content h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .benefit-content p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        
+        .testimonial {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .testimonial:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            color: var(--primary-light);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            padding-left: 40px;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: var(--text-dark);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .testimonial-info h4 {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        
+        .testimonial-info p {
+            color: var(--text-light);
+            font-size: 13px;
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--primary-light);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            top: 15px;
+            right: -8px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -8px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .timeline-content p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        
+        .mentor-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .mentor-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .mentor-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .mentor-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .mentor-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .mentor-title {
+            color: var(--secondary-dark);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .mentor-bio {
+            color: var(--text-light);
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background-color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            background-color: var(--light-gray);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 20px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+
+        @media (max-width: 1100px) {
+            .grid-2, .grid-3, .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .benefits-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .timeline:before {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-dot {
+                left: 23px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="manjuar.html" class="logo">
+                    <i class="fas fa-mountain"></i>
+                    Apex Rise
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="manjuar.html">Home</a></li>
+                        <li><a href="program.html" class="active">Programs</a></li>
+                        <li><a href="our approach.html">Our Approach</a></li>
+                        <li><a href="success story.html">Success Stories</a></li>
+                        <li><a href="about us.html">About Us</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <a href="get involved.html" class="btn btn-primary">
+                        <i class="fas fa-hands-helping"></i> Get Involved
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Future Leaders Program</h1>
+            <p>Empowering rural teens with leadership skills, mentorship, and the confidence to create positive change in their communities.</p>
+            <div>
+                <a href="#apply" class="btn btn-secondary">Apply Now</a>
+                <a href="#learn-more" class="btn btn-outline" style="color: white; border-color: white;">Learn More</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="program-highlight">
+                <div class="program-image" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="program-content">
+                    <h1 class="program-title">Developing Tomorrow's Rural Leaders</h1>
+                    <p class="program-subtitle">A 6-month transformational leadership program for ages 15-18</p>
+                    <p class="program-description">
+                        The Future Leaders Program is designed to identify, nurture, and empower promising young individuals from rural communities. Through a combination of skill-building workshops, mentorship, and hands-on community projects, participants develop the confidence and capabilities to become agents of positive change in their villages and beyond.
+                    </p>
+                    <div class="program-meta">
+                        <span><i class="fas fa-clock"></i> 6 Month Program</span>
+                        <span><i class="fas fa-users"></i> Ages 15-18</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Available in 50+ Villages</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" style="background-color: var(--light-gray);" id="learn-more">
+        <div class="container">
+            <div class="section-title">
+                <h2>Program Highlights</h2>
+                <p>What makes our Future Leaders Program unique and effective</p>
+            </div>
+            
+            <div class="program-details">
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="detail-content">
+                        <h3>Leadership Workshops</h3>
+                        <p>Interactive sessions covering communication, problem-solving, emotional intelligence, and ethical leadership tailored for rural contexts.</p>
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="detail-content">
+                        <h3>Mentorship Program</h3>
+                        <p>One-on-one guidance from successful professionals who grew up in similar rural backgrounds, providing role models and practical advice.</p>
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="detail-content">
+                        <h3>Community Projects</h3>
+                        <p>Hands-on experience designing and implementing projects that address real challenges in participants' home villages.</p>
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="detail-content">
+                        <h3>Peer Network</h3>
+                        <p>Connection with like-minded ambitious youth from across rural India, creating a support system that lasts beyond the program.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Program Benefits</h2>
+                <p>How participants grow through the Future Leaders Program</p>
+            </div>
+            
+            <div class="benefits-container">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Confident Communication</h4>
+                        <p>Develop public speaking and interpersonal skills to articulate ideas effectively in any setting.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Critical Thinking</h4>
+                        <p>Learn to analyze problems, evaluate solutions, and make informed decisions for community challenges.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Team Leadership</h4>
+                        <p>Gain experience motivating and coordinating teams to achieve shared goals.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Project Management</h4>
+                        <p>Practical skills in planning, organizing, and executing community initiatives from start to finish.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Emotional Resilience</h4>
+                        <p>Build the inner strength to handle setbacks and persist toward long-term goals.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Expanded Perspective</h4>
+                        <p>Exposure to new ideas and possibilities beyond traditional rural occupations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Program Timeline</h2>
+                <p>The 6-month journey of transformation</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Month 1: Leadership Foundations</h3>
+                        <p>Self-awareness, communication basics, and introduction to leadership styles through interactive workshops.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Month 2: Community Assessment</h3>
+                        <p>Learn research methods to identify key challenges and opportunities in your village.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Month 3: Project Planning</h3>
+                        <p>Develop a concrete plan to address a community need, with mentor guidance.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Month 4: Implementation</h3>
+                        <p>Put your plan into action, learning to mobilize resources and community support.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Month 5: Reflection & Growth</h3>
+                        <p>Evaluate progress, overcome obstacles, and adapt strategies for greater impact.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Month 6: Celebration & Next Steps</h3>
+                        <p>Showcase achievements, receive certification, and plan for continued leadership development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Mentors</h2>
+                <p>Experienced professionals guiding our future leaders</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="mentor-card">
+                    <div class="mentor-image" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="mentor-info">
+                        <h3 class="mentor-name">Dr. Ananya Patel</h3>
+                        <p class="mentor-title">Public Health Advocate</p>
+                        <p class="mentor-bio">From a small village in Gujarat to founding a rural health initiative serving 50,000 people annually.</p>
+                        <a href="#" class="btn btn-outline" style="padding: 5px 15px; font-size: 13px;">View Profile</a>
+                    </div>
+                </div>
+                
+                <div class="mentor-card">
+                    <div class="mentor-image" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="mentor-info">
+                        <h3 class="mentor-name">Rahul Mehta</h3>
+                        <p class="mentor-title">Social Entrepreneur</p>
+                        <p class="mentor-bio">Built a sustainable agriculture business that employs 200+ villagers while preserving traditional practices.</p>
+                        <a href="#" class="btn btn-outline" style="padding: 5px 15px; font-size: 13px;">View Profile</a>
+                    </div>
+                </div>
+                
+                <div class="mentor-card">
+                    <div class="mentor-image" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="mentor-info">
+                        <h3 class="mentor-name">Priya Deshmukh</h3>
+                        <p class="mentor-title">Education Innovator</p>
+                        <p class="mentor-bio">Developed low-cost STEM education programs now used in 150+ rural schools across Maharashtra.</p>
+                        <a href="#" class="btn btn-outline" style="padding: 5px 15px; font-size: 13px;">View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Success Stories</h2>
+                <p>Hear from our Future Leaders alumni</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        The program transformed how I see myself and my village. I returned home and started a youth group that's now working on sanitation and education projects. The leadership skills I gained are helping me every day.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SK</div>
+                        <div class="testimonial-info">
+                            <h4>Sunil Kumar</h4>
+                            <p>Age 19, Uttar Pradesh</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        My mentor helped me believe I could aim for college. I'm now the first in my family to attend university, studying agriculture to bring modern techniques back to my village. The program gave me the confidence to dream big.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">NM</div>
+                        <div class="testimonial-info">
+                            <h4>Neha Mishra</h4>
+                            <p>Age 18, Madhya Pradesh</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        Through the community project component, I realized I could make a difference. We started a digital literacy program that's now being adopted by neighboring villages. The program showed me that leadership starts with action.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AJ</div>
+                        <div class="testimonial-info">
+                            <h4>Arjun Jadhav</h4>
+                            <p>Age 17, Maharashtra</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about the Future Leaders Program</p>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Who is eligible for the Future Leaders Program?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The program is open to rural youth ages 15-18 who demonstrate leadership potential and a commitment to community development. No prior leadership experience is required—just motivation to learn and grow.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What is the time commitment required?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Participants should expect to dedicate approximately 8-10 hours per month to workshops, mentor meetings, and project work. The schedule is designed to accommodate school responsibilities.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Is there any cost to participate?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Thanks to our generous donors, the program is completely free for selected participants. We even provide small grants to help implement community projects.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How are mentors matched with participants?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We carefully match mentors and mentees based on shared interests, background, and goals. Our matching process ensures meaningful connections that often continue beyond the program.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What happens after the 6-month program ends?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Graduates join our alumni network with access to continued learning opportunities, networking events, and small grants to expand their projects. Many stay connected with their mentors as well.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section" id="apply">
+        <div class="container">
+            <h2>Ready to Become a Future Leader?</h2>
+            <p>Applications are open for our next cohort. Take the first step toward unlocking your leadership potential.</p>
+            <div>
+                <a href="#" class="btn btn-secondary">Apply Now</a>
+                <a href="#" class="btn btn-outline" style="color: white; border-color: white;">Contact Our Team</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Apex Rise</h3>
+                    <p style="color: #bdc3c7; margin-bottom: 20px;">Empowering village children with confidence and emotional resilience to face society without fear.</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="#">Confidence Builders</a></li>
+                        <li><a href="#">Future Leaders</a></li>
+                        <li><a href="#">Digital Confidence</a></li>
+                        <li><a href="#">Parent Workshops</a></li>
+                        <li><a href="#">Teacher Training</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Our Approach</a></li>
+                        <li><a href="#">Impact</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="#">Donate</a></li>
+                        <li><a href="#">Volunteer</a></li>
+                        <li><a href="#">Partner With Us</a></li>
+                        <li><a href="#">Start a Chapter</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Apex Rise. All rights reserved. | Empowering rural India one child at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle FAQ items
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+            
+            // Close other FAQs when opening a new one
+            if (faqItem.classList.contains('active')) {
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem && item.classList.contains('active')) {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

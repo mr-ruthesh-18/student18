@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Rise | Family Guardian</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --primary-dark: #3a5a8a;
+            --primary-light: #e8f0fe;
+            --secondary: #ff914d;
+            --secondary-dark: #e67e3e;
+            --secondary-light: #fff0e6;
+            --accent: #ff4757;
+            --dark: #2c3e50;
+            --text-dark: #34495e;
+            --text-light: #7f8c8d;
+            --light-gray: #f8f9fa;
+            --gray: #e9ecef;
+            --border-color: #e0e0e0;
+            --border-radius: 8px;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        body {
+            background-color: #fafafa;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 8px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 28px;
+        }
+        
+        nav ul li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        nav ul li a.active:after {
+            width: 100%;
+        }
+        
+        .btn {
+            padding: 11px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-block;
+            font-size: 15px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(74, 111, 165, 0.3);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 8px 20px rgba(74, 111, 165, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 145, 77, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(255, 145, 77, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-outline {
+            background-color: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-light);
+        }
+
+        /* Login Page Specific Styles */
+        .login-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.9), rgba(58, 90, 138, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+        }
+
+        .login-container {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .login-header {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .login-header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+
+        .login-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+            outline: none;
+        }
+
+        .login-footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            background-color: var(--light-gray);
+        }
+
+        .login-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .social-login {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .social-login p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .social-login p:before,
+        .social-login p:after {
+            content: "";
+            display: inline-block;
+            width: 30%;
+            height: 1px;
+            background: var(--border-color);
+            position: absolute;
+            top: 50%;
+        }
+
+        .social-login p:before {
+            left: 0;
+        }
+
+        .social-login p:after {
+            right: 0;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn.google {
+            background-color: #DB4437;
+        }
+
+        .social-btn.facebook {
+            background-color: #4267B2;
+        }
+
+        .social-btn.twitter {
+            background-color: #1DA1F2;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Dashboard Styles */
+        .dashboard-section {
+            display: none;
+            min-height: 100vh;
+            padding: 40px 0;
+            background-color: var(--light-gray);
+        }
+
+        .dashboard-header {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dashboard-header .logo {
+            color: white;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--secondary);
+        }
+
+        .card-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .card-header h2 {
+            margin: 0;
+            color: var(--primary);
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background: #FCFAF6;
+        }
+
+        .activity-log {
+            max-height: 400px;
+            overflow-y: auto;
+            background: #FCFAF6;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .blocked-site {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            background: #FFF8F0;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .child-selector {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1rem;
+        }
+
+        .time-controls {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        /* Forgot Password Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                margin: 0 20px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+
+            .child-selector,
+            .time-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Login Section -->
+    <div id="login-section">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <a href="#" class="logo">
+                        <i class="fas fa-mountain"></i>
+                        Apex Rise
+                    </a>
+                    <nav>
+                        <ul>
+                            <li><a href="manjuar.html">Home</a></li>
+                            <li><a href="program.html">Programs</a></li>
+                            <li><a href="our approach.html">Our Approach</a></li>
+                            <li><a href="success story.html">Success Stories</a></li>
+                            <li><a href="about us.html">About Us</a></li>
+                            <li><a href="login.html" class="active">Login</a></li>
+                        </ul>
+                    </nav>
+                    <div>
+                        <a href="get involved.html" class="btn btn-primary">
+                            <i class="fas fa-hands-helping"></i> Get Involved
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <section class="login-hero">
+            <div class="login-container">
+                <div class="login-header">
+                    <h1>Welcome Back</h1>
+                    <p>Sign in to continue your journey with Apex Rise</p>
+                </div>
+                
+                <div class="login-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                        </div>
+                        
+                        <div class="form-group" style="text-align: right;">
+                            <a href="#" onclick="showForgotPassword()" style="font-size: 14px; color: var(--primary);">Forgot Password?</a>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 16px;">
+                            Sign In
+                        </button>
+                    </form>
+                    
+                    <div class="social-login">
+                        <p>Or sign in with</p>
+                        <div class="social-buttons">
+                            <a href="#" class="social-btn google">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a href="#" class="social-btn facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-btn twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="login-footer">
+                    Don't have an account? <a href="#" onclick="showRegister()">Create one</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forgot Password Modal -->
+        <div class="modal" id="forgotPasswordModal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+                <h2 style="margin-bottom: 15px;">Reset Password</h2>
+                <p style="margin-bottom: 20px;">Enter your email address and we'll send you a link to reset your password.</p>
+                <form id="forgotPasswordForm">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="forgotEmail" required style="width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: var(--border-radius);">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 16px;">Send Reset Link</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Register Modal -->
+        <div class="modal" id="registerModal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+                <h2 style="margin-bottom: 15px;">Create Account</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="registerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="registerPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Security Question 1</label>
+                        <input type="text" id="securityQ1" placeholder="What city were you born in?" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Security Question 2</label>
+                        <input type="text" id="securityQ2" placeholder="What's your pet's name?" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 16px;">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div id="dashboard-section" class="dashboard-section">
+        <div class="dashboard-header">
+            <div class="container">
+                <a href="#" class="logo">
+                    <i class="fas fa-mountain"></i>
+                    Apex Rise Dashboard
+                </a>
+                <button onclick="logout()" class="btn btn-secondary">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="dashboard">
+                <!-- Child Profile Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Child Profile Management</h2>
+                    </div>
+                    <div class="form-group child-selector">
+                        <select id="child-select">
+                            <option value="child1">Ethan Windsor</option>
+                            <option value="child2">Olivia Kensington</option>
+                        </select>
+                        <button onclick="addNewChild()" class="btn btn-primary">Add New Profile</button>
+                    </div>
+                </div>
+
+                <!-- Time Management Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Time Restrictions</h2>
+                    </div>
+                    <div class="form-group">
+                        <label>Daily Usage Limit (Hours)</label>
+                        <div class="time-controls">
+                            <input type="number" id="daily-limit" min="0" max="24" value="2">
+                            <button onclick="setTimeLimit()" class="btn btn-primary">Apply Limit</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Bedtime Configuration</label>
+                        <div class="time-controls">
+                            <input type="time" id="bedtime-start" value="20:00">
+                            <input type="time" id="bedtime-end" value="07:00">
+                            <button onclick="setBedtime()" class="btn btn-primary">Set Curfew</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Filtering Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Web Restrictions</h2>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="block-site" placeholder="Enter domain to restrict">
+                        <button onclick="blockWebsite()" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Enforce Restriction</button>
+                    </div>
+                    <div class="card-header" style="margin-top: 1rem; padding-bottom: 0;">
+                        <h3>Active Restrictions</h3>
+                    </div>
+                    <div id="blocked-sites-list" class="activity-log">
+                        <!-- Sample blocked sites, will be populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Activity Log Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Usage Chronicle</h2>
+                    </div>
+                    <div id="activity-log" class="activity-log">
+                        <!-- Sample activity logs, will be populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // User Management System
+        const users = JSON.parse(localStorage.getItem('apexRiseUsers')) || {};
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is already logged in
+            if (sessionStorage.getItem('currentUser')) {
+                showDashboard();
+                loadUserData(sessionStorage.getItem('currentUser'));
+            } else {
+                document.getElementById('login-section').style.display = 'block';
+                document.getElementById('dashboard-section').style.display = 'none';
+            }
+            
+            // Set up form event listeners
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            document.getElementById('registerForm').addEventListener('submit', handleRegister);
+            document.getElementById('forgotPasswordForm').addEventListener('submit', handleForgotPassword);
+            
+            // Add event listener to child select
+            document.getElementById('child-select').addEventListener('change', loadSelectedChildData);
+        });
+
+        function showDashboard() {
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('dashboard-section').style.display = 'block';
+        }
+
+        function showRegister() {
+            closeModal();
+            document.getElementById('registerModal').style.display = 'flex';
+        }
+
+        function showForgotPassword() {
+            closeModal();
+            document.getElementById('forgotPasswordModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const user = users[email];
+            if (!user || btoa(password) !== user.password) {
+                alert('Invalid credentials!');
+                return;
+            }
+
+            sessionStorage.setItem('currentUser', email);
+            showDashboard();
+            loadUserData(email);
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const q1 = document.getElementById('securityQ1').value;
+            const q2 = document.getElementById('securityQ2').value;
+
+            if (users[email]) {
+                alert('User already exists!');
+                return;
+            }
+
+            users[email] = {
+                password: btoa(password),
+                security: { q1, q2 },
+                children: {
+                    "Ethan Windsor": {
+                        timeLimit: 2,
+                        bedtime: { start: '20:00', end: '07:00' },
+                        blockedSites: ["tiktok.com", "games.com"],
+                        activity: [
+                            { time: getCurrentTime(), action: "Profile created" },
+                            { time: getCurrentTime(), action: "Attempted to access restricted site: tiktok.com" }
+                        ]
+                    },
+                    "Olivia Kensington": {
+                        timeLimit: 3,
+                        bedtime: { start: '21:00', end: '07:30' },
+                        blockedSites: ["instagram.com"],
+                        activity: [
+                            { time: getCurrentTime(), action: "Profile created" },
+                            { time: getCurrentTime(), action: "Educational app usage: 45 minutes" }
+                        ]
+                    }
+                }
+            };
+
+            localStorage.setItem('apexRiseUsers', JSON.stringify(users));
+            alert('Registration successful! Please login.');
+            closeModal();
+        }
+
+        function handleForgotPassword(e) {
+            e.preventDefault();
+            const email = document.getElementById('forgotEmail').value;
+            
+            if (email) {
+                // In a real app, you would send this to your backend
+                console.log('Password reset requested for:', email);
+                alert('Password reset link sent to ' + email);
+                closeModal();
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('currentUser');
+            document.getElementById('login-section').style.display = 'block';
+            document.getElementById('dashboard-section').style.display = 'none';
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        // Child Management Functions
+        function loadUserData(email) {
+            const userData = users[email];
+            if (!userData) return;
+            
+            updateProfileList();
+            loadSelectedChildData();
+        }
+
+        function updateProfileList() {
+            const select = document.getElementById('child-select');
+            const currentUser = sessionStorage.getItem('currentUser');
+            if (!currentUser || !users[currentUser]) return;
+            
+            select.innerHTML = '';
+            Object.keys(users[currentUser].children).forEach(name => {
+                const option = document.createElement('option');
+                option.value = name;
+                option.textContent = name;
+                select.appendChild(option);
+            });
+            
+            // Load the first child's data
+            if (select.options.length > 0) {
+                loadSelectedChildData();
+            }
+        }
+
+        function loadSelectedChildData() {
+            const currentUser = sessionStorage.getItem('currentUser');
+            const childSelect = document.getElementById('child-select');
+            if (!childSelect.value || !currentUser) return;
+            
+            const childName = childSelect.value;
+            const childData = users[currentUser].children[childName];
+            
+            if (!childData) return;
+            
+            // Load time restrictions
+            document.getElementById('daily-limit').value = childData.timeLimit || 0;
+            document.getElementById('bedtime-start').value = childData.bedtime?.start || '20:00';
+            document.getElementById('bedtime-end').value = childData.bedtime?.end || '07:00';
+            
+            // Load blocked sites
+            const blockedSitesList = document.getElementById('blocked-sites-list');
+            blockedSitesList.innerHTML = '';
+            
+            if (childData.blockedSites && childData.blockedSites.length > 0) {
+                childData.blockedSites.forEach(site => {
+                    const siteEl = document.createElement('div');
+                    siteEl.className = 'blocked-site';
+                    siteEl.innerHTML = `
+                        <span>${site}</span>
+                        <button onclick="removeBlockedSite('${site}')" class="btn btn-secondary" style="padding: 5px 10px; font-size: 12px;">Remove</button>
+                    `;
+                    blockedSitesList.appendChild(siteEl);
+                });
+            } else {
+                blockedSitesList.innerHTML = '<p>No restricted sites.</p>';
+            }
+            
+            // Load activity log
+            const activityLog = document.getElementById('activity-log');
+            activityLog.innerHTML = '';
+            
+            if (childData.activity && childData.activity.length > 0) {
+                childData.activity.forEach(activity => {
+                    const activityEl = document.createElement('div');
+                    activityEl.className = 'blocked-site';
+                    activityEl.innerHTML = `
+                        <strong>${activity.time}</strong>: ${activity.action}
+                    `;
+                    activityLog.appendChild(activityEl);
+                });
+            } else {
+                activityLog.innerHTML = '<p>No activity recorded yet.</p>';
+            }
+        }
+
+        function addNewChild() {
+            const currentUser = sessionStorage.getItem('currentUser');
+            if (!currentUser) return;
+            
+            const childName = prompt('Enter child name:');
+            if (!childName) return;
+            
+            users[currentUser].children[childName] = {
+                timeLimit: 2,
+                bedtime: { start: '20:00', end: '07:00' },
+                blockedSites: [],
+                activity: [
+                    { time: getCurrentTime(), action: "Profile created" }
+                ]
+            };
+            
+            localStorage.setItem('apexRiseUsers', JSON.stringify(users));
+            updateProfileList();
+        }
+
+        function setTimeLimit() {
+            const currentUser = sessionStorage.getItem('currentUser');
+            const childName = document.getElementById('child-select').value;
+            const timeLimit = document.getElementById('daily-limit').value;
+            
+            if (!currentUser || !childName) return;
+            
+            users[currentUser].children[childName].timeLimit = parseFloat(timeLimit);
+            users[currentUser].children[childName].activity.push({
+                time: getCurrentTime(),
+                action: `Daily limit set to ${timeLimit} hours`
+            });
+            
+            localStorage.setItem('apexRiseUsers', JSON.stringify(users));
+            alert(`Time limit set to ${timeLimit} hours for ${childName}`);
+            loadSelectedChildData();
+        }
+
+        function setBedtime() {
+            const currentUser = sessionStorage.getItem('currentUser');
+            const childName = document.getElementById('child-select').value;
+            const bedtimeStart = document.getElementById('bedtime-start').value;
+            const bedtimeEnd = document.getElementById('bedtime-end').value;
+            
+            if (!currentUser || !childName) return;
+            
+            users[currentUser].children[childName].bedtime = {
+                start: bedtimeStart,
+                end: bedtimeEnd
+            };
+            
+            users[currentUser].children[childName].activity.push({
+                time: getCurrentTime(),
+                action: `Bedtime set: ${bedtimeStart} to ${bedtimeEnd}`
+            });
+            
+            localStorage.setItem('apexRiseUsers', JSON.stringify(users));
+            alert(`Bedtime set from ${bedtimeStart} to ${bedtimeEnd} for ${childName}`);
+            loadSelectedChildData();
+        }
+
+        function blockWebsite() {
+            const currentUser = sessionStorage.getItem('currentUser');
+            const childName = document.getElementById('child-select').value;
+            const site = document.getElementById('block-site').value.trim();
+            
+            if (!currentUser || !childName || !site) return;
+            
+            if (!users[currentUser].children[childName].blockedSites) {
+                users[currentUser].children[childName].blockedSites = [];
+            }
+            
+            if (!users[currentUser].children[childName].blockedSites.includes(site)) {
+                users[currentUser].children[childName].blockedSites.push(site);
+                
+                users[currentUser].children[childName].activity.push({
+                    time: getCurrentTime(),
+                    action: `Website restricted: ${site}`
+                });
+                
+                localStorage.setItem('apexRiseUsers', JSON.stringify(users));
+                document.getElementById('block-site').value = '';
+                alert(`${site} has been restricted for ${childName}`);
+                loadSelectedChildData();
+            } else {
+                alert(`${site} is already restricted for this child.`);
+            }
+        }
+
+        function removeBlockedSite(site) {
+            const currentUser = sessionStorage.getItem('currentUser');
+            const childName = document.getElementById('child-select').value;
+            
+            if (!currentUser || !childName) return;
+            
+            const blockedSites = users[currentUser].children[childName].blockedSites;
+            const index = blockedSites.indexOf(site);
+            
+            if (index > -1) {
+                blockedSites.splice(index, 1);
+                
+                users[currentUser].children[childName].activity.push({
+                    time: getCurrentTime(),
+                    action: `Website restriction removed: ${site}`
+                });
+                
+                localStorage.setItem('apexRiseUsers', JSON.stringify(users));
+                loadSelectedChildData();
+            }
+        }
+
+        function getCurrentTime() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            
+            return `${year}-${month}-${day} ${hours}:${minutes}`;
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

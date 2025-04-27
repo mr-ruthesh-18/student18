@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start a Chapter | Apex Rise</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --primary-dark: #3a5a8a;
+            --primary-light: #e8f0fe;
+            --secondary: #ff914d;
+            --secondary-dark: #e67e3e;
+            --secondary-light: #fff0e6;
+            --accent: #ff4757;
+            --dark: #2c3e50;
+            --text-dark: #34495e;
+            --text-light: #7f8c8d;
+            --light-gray: #f8f9fa;
+            --gray: #e9ecef;
+            --border-color: #e0e0e0;
+            --border-radius: 8px;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        body {
+            background-color: #fafafa;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 8px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 28px;
+        }
+        
+        nav ul li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        nav ul li a.active:after {
+            width: 100%;
+        }
+        
+        .btn {
+            padding: 11px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-block;
+            font-size: 15px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(74, 111, 165, 0.3);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 8px 20px rgba(74, 111, 165, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 145, 77, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(255, 145, 77, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-outline {
+            background-color: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.9), rgba(58, 90, 138, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .card-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 0;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .process-step {
+            display: flex;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            font-weight: 700;
+        }
+        
+        .step-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .step-content p {
+            color: var(--text-light);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .benefits-list {
+            list-style: none;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-dark);
+        }
+        
+        .benefits-list li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+        
+        .requirements-list {
+            list-style: none;
+        }
+        
+        .requirements-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-dark);
+        }
+        
+        .requirements-list li:before {
+            content: '\f192';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        
+        .testimonial {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .testimonial:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            color: var(--primary-light);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            padding-left: 40px;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: var(--text-dark);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .testimonial-info h4 {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        
+        .testimonial-info p {
+            color: var(--text-light);
+            font-size: 13px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1100px) {
+            .grid-2, .grid-3, .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="manjuar.html" class="logo">
+                    <i class="fas fa-mountain"></i>
+                    Apex Rise
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="manjuar.html">Home</a></li>
+                        <li><a href="program.html">Programs</a></li>
+                        <li><a href="our approach.html">Our Approach</a></li>
+                        <li><a href="success story.html">Success Stories</a></li>
+                        <li><a href="about us.html">About Us</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <a href="get involved.html" class="btn btn-primary">
+                        <i class="fas fa-hands-helping"></i> Get Involved
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Start an Apex Rise Chapter in Your Community</h1>
+            <p>Bring our transformative emotional empowerment programs to children in your village or town and create lasting change.</p>
+            <div>
+                <a href="#apply" class="btn btn-secondary">Apply Now</a>
+                <a href="#learn" class="btn btn-outline" style="color: white; border-color: white;">Learn More</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="learn">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Start a Chapter?</h2>
+                <p>By establishing an Apex Rise chapter, you become a catalyst for change in your community, empowering children with confidence and emotional resilience.</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="step-number">1</div>
+                        <h3 style="margin-bottom: 15px;">Local Impact</h3>
+                        <p>Directly transform the lives of children in your own community by providing them with essential emotional skills.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="step-number">2</div>
+                        <h3 style="margin-bottom: 15px;">Community Leadership</h3>
+                        <p>Establish yourself as a leader in child development and emotional education in your area.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="step-number">3</div>
+                        <h3 style="margin-bottom: 15px;">Support Network</h3>
+                        <p>Join a nationwide network of chapter leaders with access to training, resources, and mentorship.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Our simple 4-step process makes it easy to bring Apex Rise to your community.</p>
+            </div>
+            
+            <div class="grid-2">
+                <div>
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Application</h3>
+                            <p>Complete our chapter application form and tell us about your community and your motivation.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Training</h3>
+                            <p>Participate in our comprehensive 2-week online training program for chapter leaders.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Launch</h3>
+                            <p>Receive our curriculum, materials, and ongoing support to launch your chapter.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Grow</h3>
+                            <p>Start with a small group and expand your impact as you gain experience and volunteers.</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Chapter Leader Benefits</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="benefits-list">
+                                <li>Comprehensive training in emotional intelligence and child development</li>
+                                <li>Access to all Apex Rise program materials and curriculum</li>
+                                <li>Monthly mentorship calls with experienced chapter leaders</li>
+                                <li>Marketing materials and templates for community outreach</li>
+                                <li>Annual leadership conference invitation</li>
+                                <li>Certificate of recognition upon successful chapter establishment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Chapter Requirements</h2>
+                <p>To ensure quality and impact, we look for these qualifications in our chapter leaders.</p>
+            </div>
+            
+            <div class="grid-2">
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Essential Requirements</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="requirements-list">
+                                <li>Passion for child development and emotional empowerment</li>
+                                <li>Commitment to run the chapter for at least 1 year</li>
+                                <li>Ability to gather at least 10 children for regular sessions</li>
+                                <li>Basic English language skills (program materials are in English)</li>
+                                <li>Regular internet access for training and support</li>
+                                <li>Two references from community leaders or educators</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Nice-to-Have Qualities</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="requirements-list">
+                                <li>Background in education, psychology, or social work</li>
+                                <li>Previous experience working with children</li>
+                                <li>Connections with local schools or community centers</li>
+                                <li>Ability to recruit and manage volunteers</li>
+                                <li>Basic computer skills for reporting and communication</li>
+                                <li>Creative ideas for adapting programs to local needs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hear From Our Chapter Leaders</h2>
+                <p>These inspiring individuals have brought Apex Rise to their communities.</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        Starting an Apex Rise chapter in my village was the most rewarding decision I've made. Seeing children who were once shy now speaking confidently in public brings me immense joy.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SM</div>
+                        <div class="testimonial-info">
+                            <h4>Sunita M.</h4>
+                            <p>Chapter Leader, Jharkhand</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        The training and support from Apex Rise headquarters gave me all the tools I needed. Now we have 35 children in our weekly sessions and parents begging us to expand.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RK</div>
+                        <div class="testimonial-info">
+                            <h4>Rajesh K.</h4>
+                            <p>Chapter Leader, Uttar Pradesh</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        I never thought I could make such a difference. The curriculum is so well-designed that even with no teaching experience, I've been able to help children transform their confidence.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">PM</div>
+                        <div class="testimonial-info">
+                            <h4>Priya M.</h4>
+                            <p>Chapter Leader, Tamil Nadu</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="apply">
+        <div class="container">
+            <div class="section-title">
+                <h2>Start Your Chapter Today</h2>
+                <p>Complete this form to begin the application process. Our team will contact you within 3 business days.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-body">
+                    <form id="chapterForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Location (Village/Town/City)</label>
+                                <input type="text" id="location" name="location" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <input type="text" id="state" name="state" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input type="text" id="country" name="country" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="background">Your Background/Experience</label>
+                            <textarea id="background" name="background" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="motivation">Why do you want to start an Apex Rise chapter?</label>
+                            <textarea id="motivation" name="motivation" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="children">How many children do you expect to reach initially?</label>
+                            <input type="number" id="children" name="children" min="5" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="space">Do you have access to a space for conducting sessions?</label>
+                            <select id="space" name="space" required>
+                                <option value="">Select an option</option>
+                                <option value="yes">Yes, I have a dedicated space</option>
+                                <option value="community">Yes, I can use a community space</option>
+                                <option value="no">No, I'll need help finding space</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="hear">How did you hear about Apex Rise?</label>
+                            <select id="hear" name="hear" required>
+                                <option value="">Select an option</option>
+                                <option value="website">Website</option>
+                                <option value="social">Social Media</option>
+                                <option value="friend">Friend/Colleague</option>
+                                <option value="news">News Article</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group" style="margin-top: 30px;">
+                            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 16px;">
+                                Submit Application
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <h2>Questions About Starting a Chapter?</h2>
+            <p>Our team is happy to answer any questions you have about the application process or running a chapter.</p>
+            <div>
+                <a href="mailto:chapters@apexrise.org" class="btn btn-secondary">Email Us</a>
+                <a href="tel:+919876543210" class="btn btn-outline" style="color: white; border-color: white;">Call Us</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Apex Rise</h3>
+                    <p style="color: #bdc3c7; margin-bottom: 20px;">Empowering village children with confidence and emotional resilience to face society without fear.</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="confidence builders.html">Confidence Builders</a></li>
+                        <li><a href="future leaders.html">Future Leaders</a></li>
+                        <li><a href="digital confidence.html">Digital Confidence</a></li>
+                        <li><a href="parent workshop.html">Parent Workshops</a></li>
+                        <li><a href="teacher taining.html">Teacher Training</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="success story.html">Our Story</a></li>
+                        <li><a href="our approach.html">Our Approach</a></li>
+                        <li><a href="impact.html">Impact</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="partner.html">Partner With Us</a></li>
+                        <li><a href="#" class="active">Start a Chapter</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Apex Rise. All rights reserved. | Empowering rural India one child at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('chapterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation
+            const form = e.target;
+            let isValid = true;
+            
+            // Check required fields
+            const requiredFields = form.querySelectorAll('[required]');
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = 'var(--accent)';
+                } else {
+                    field.style.borderColor = 'var(--border-color)';
+                }
+            });
+            
+            // Check number of children
+            const childrenInput = document.getElementById('children');
+            if (childrenInput.value < 5) {
+                isValid = false;
+                childrenInput.style.borderColor = 'var(--accent)';
+                alert('Please enter at least 5 children for your initial reach.');
+            } else {
+                childrenInput.style.borderColor = 'var(--border-color)';
+            }
+            
+            if (isValid) {
+                // In a real application, you would send this data to your server
+                console.log('Form submitted:', {
+                    fullName: form.fullName.value,
+                    email: form.email.value,
+                    phone: form.phone.value,
+                    location: form.location.value,
+                    state: form.state.value,
+                    country: form.country.value,
+                    background: form.background.value,
+                    motivation: form.motivation.value,
+                    children: form.children.value,
+                    space: form.space.value,
+                    hear: form.hear.value
+                });
+                
+                // Show success message
+                alert('Thank you for your application! Our team will contact you within 3 business days.');
+                form.reset();
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+        
+        // Reset field styles when user starts typing
+        const inputs = document.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                this.style.borderColor = 'var(--border-color)';
+            });
+        });
+    </script>
+</body>
+</html>

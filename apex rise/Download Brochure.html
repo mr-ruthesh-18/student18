@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Rise | Download Brochure</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --primary-dark: #3a5a8a;
+            --primary-light: #e8f0fe;
+            --secondary: #ff914d;
+            --secondary-dark: #e67e3e;
+            --secondary-light: #fff0e6;
+            --accent: #ff4757;
+            --dark: #2c3e50;
+            --text-dark: #34495e;
+            --text-light: #7f8c8d;
+            --light-gray: #f8f9fa;
+            --gray: #e9ecef;
+            --border-color: #e0e0e0;
+            --border-radius: 8px;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        body {
+            background-color: #fafafa;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 8px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 28px;
+        }
+        
+        nav ul li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--primary);
+        }
+        
+        nav ul li a.active:after {
+            width: 100%;
+        }
+        
+        .btn {
+            padding: 11px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-block;
+            font-size: 15px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(74, 111, 165, 0.3);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 8px 20px rgba(74, 111, 165, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 145, 77, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(255, 145, 77, 0.5);
+            transform: translateY(-1px);
+        }
+        
+        .btn-outline {
+            background-color: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(74, 111, 165, 0.9), rgba(58, 90, 138, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .brochure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .brochure-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .brochure-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .brochure-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .brochure-content {
+            padding: 25px;
+        }
+        
+        .brochure-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .brochure-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        
+        .brochure-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .brochure-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .download-form {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .form-note {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 1100px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .brochure-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .brochure-actions {
+                flex-direction: column;
+            }
+            
+            .brochure-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="manjuar.html" class="logo">
+                    <i class="fas fa-mountain"></i>
+                    Apex Rise
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="manjuar.html">Home</a></li>
+                        <li><a href="program.html">Programs</a></li>
+                        <li><a href="our approach.html">Our Approach</a></li>
+                        <li><a href="success story.html">Success Stories</a></li>
+                        <li><a href="about us.html">About Us</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <a href="get involved.html" class="btn btn-primary">
+                        <i class="fas fa-hands-helping"></i> Get Involved
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Download Our Brochures</h1>
+            <p>Get detailed information about our programs, impact, and how you can get involved in empowering village children.</p>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Program Brochures</h2>
+                <p>Download our comprehensive brochures to learn more about each of our transformational programs.</p>
+            </div>
+            
+            <div class="brochure-grid">
+                <div class="brochure-card">
+                    <div class="brochure-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="brochure-content">
+                        <h3 class="brochure-title">Confidence Building Programs</h3>
+                        <p class="brochure-description">Learn about our foundational programs that help children overcome fear and self-doubt.</p>
+                        <div class="brochure-meta">
+                            <span><i class="fas fa-file-pdf"></i> PDF, 2.4MB</span>
+                            <span><i class="fas fa-calendar-alt"></i> Updated: June 2023</span>
+                        </div>
+                        <div class="brochure-actions">
+                            <a href="#" class="btn btn-primary" download><i class="fas fa-download"></i> Download</a>
+                            <a href="#" class="btn btn-outline"><i class="fas fa-eye"></i> Preview</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="brochure-card">
+                    <div class="brochure-image" style="background-image: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="brochure-content">
+                        <h3 class="brochure-title">Leadership Development</h3>
+                        <p class="brochure-description">Discover how we prepare teens for leadership roles in their communities.</p>
+                        <div class="brochure-meta">
+                            <span><i class="fas fa-file-pdf"></i> PDF, 3.1MB</span>
+                            <span><i class="fas fa-calendar-alt"></i> Updated: May 2023</span>
+                        </div>
+                        <div class="brochure-actions">
+                            <a href="#" class="btn btn-primary" download><i class="fas fa-download"></i> Download</a>
+                            <a href="#" class="btn btn-outline"><i class="fas fa-eye"></i> Preview</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="brochure-card">
+                    <div class="brochure-image" style="background-image: url('https://images.unsplash.com/photo-1544396821-4dd40b938ad3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="brochure-content">
+                        <h3 class="brochure-title">Digital Empowerment</h3>
+                        <p class="brochure-description">Explore our initiatives that bridge the digital divide for rural children.</p>
+                        <div class="brochure-meta">
+                            <span><i class="fas fa-file-pdf"></i> PDF, 2.8MB</span>
+                            <span><i class="fas fa-calendar-alt"></i> Updated: July 2023</span>
+                        </div>
+                        <div class="brochure-actions">
+                            <a href="#" class="btn btn-primary" download><i class="fas fa-download"></i> Download</a>
+                            <a href="#" class="btn btn-outline"><i class="fas fa-eye"></i> Preview</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Organization Brochures</h2>
+                <p>Learn more about Apex Rise, our mission, and our impact through these comprehensive resources.</p>
+            </div>
+            
+            <div class="brochure-grid">
+                <div class="brochure-card">
+                    <div class="brochure-image" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="brochure-content">
+                        <h3 class="brochure-title">Annual Impact Report</h3>
+                        <p class="brochure-description">Our comprehensive report on the impact we've made in the past year.</p>
+                        <div class="brochure-meta">
+                            <span><i class="fas fa-file-pdf"></i> PDF, 4.2MB</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2023 Edition</span>
+                        </div>
+                        <div class="brochure-actions">
+                            <a href="#" class="btn btn-primary" download><i class="fas fa-download"></i> Download</a>
+                            <a href="#" class="btn btn-outline"><i class="fas fa-eye"></i> Preview</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="brochure-card">
+                    <div class="brochure-image" style="background-image: url('https://images.unsplash.com/photo-1571260898933-d1a1f83cef55?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="brochure-content">
+                        <h3 class="brochure-title">Get Involved Guide</h3>
+                        <p class="brochure-description">Ways you can support our mission through volunteering and donations.</p>
+                        <div class="brochure-meta">
+                            <span><i class="fas fa-file-pdf"></i> PDF, 1.9MB</span>
+                            <span><i class="fas fa-calendar-alt"></i> Updated: April 2023</span>
+                        </div>
+                        <div class="brochure-actions">
+                            <a href="#" class="btn btn-primary" download><i class="fas fa-download"></i> Download</a>
+                            <a href="#" class="btn btn-outline"><i class="fas fa-eye"></i> Preview</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="brochure-card">
+                    <div class="brochure-image" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="brochure-content">
+                        <h3 class="brochure-title">Success Stories</h3>
+                        <p class="brochure-description">Inspiring stories of children whose lives have been transformed.</p>
+                        <div class="brochure-meta">
+                            <span><i class="fas fa-file-pdf"></i> PDF, 3.5MB</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2023 Collection</span>
+                        </div>
+                        <div class="brochure-actions">
+                            <a href="#" class="btn btn-primary" download><i class="fas fa-download"></i> Download</a>
+                            <a href="#" class="btn btn-outline"><i class="fas fa-eye"></i> Preview</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Request Printed Materials</h2>
+                <p>Fill out this form to have our printed brochures mailed to you.</p>
+            </div>
+            
+            <div class="download-form">
+                <form id="brochureRequestForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Mailing Address</label>
+                        <textarea id="address" class="form-control" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Materials Requested</label>
+                        <div style="margin-top: 10px;">
+                            <label style="display: block; margin-bottom: 10px;">
+                                <input type="checkbox" name="materials" value="programs"> Program Brochures (All)
+                            </label>
+                            <label style="display: block; margin-bottom: 10px;">
+                                <input type="checkbox" name="materials" value="impact"> Annual Impact Report
+                            </label>
+                            <label style="display: block; margin-bottom: 10px;">
+                                <input type="checkbox" name="materials" value="stories"> Success Stories Collection
+                            </label>
+                            <label style="display: block; margin-bottom: 10px;">
+                                <input type="checkbox" name="materials" value="involvement"> Get Involved Guide
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="purpose">Purpose of Request</label>
+                        <select id="purpose" class="form-control">
+                            <option value="personal">Personal Interest</option>
+                            <option value="school">School/Educational Use</option>
+                            <option value="organization">Organization/Non-profit</option>
+                            <option value="research">Research</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" style="text-align: center;">
+                        <button type="submit" class="btn btn-primary" style="padding: 12px 40px;">Submit Request</button>
+                    </div>
+                    
+                    <p class="form-note">
+                        We respect your privacy. Your information will only be used to fulfill your brochure request.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <h2>Have Questions About Our Programs?</h2>
+            <p>Our team is happy to provide more information and help you find the right resources.</p>
+            <div>
+                <a href="contact us.html" class="btn btn-secondary">Contact Us</a>
+                <a href="program.html" class="btn btn-outline" style="color: white; border-color: white;">View All Programs</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Apex Rise</h3>
+                    <p style="color: #bdc3c7; margin-bottom: 20px;">Empowering village children with confidence and emotional resilience to face society without fear.</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; font-size: 20px;"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="confidence builders.html">Confidence Building</a></li>
+                        <li><a href="future leaders.html">Leadership Development</a></li>
+                        <li><a href="digital empowerment.html">Digital Empowerment</a></li>
+                        <li><a href="parent workshop.html">Parent Workshops</a></li>
+                        <li><a href="teacher taining.html">Teacher Training</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <ul>
+                        <li><a href="success story.html">Our Story</a></li>
+                        <li><a href="our approach.html">Our Approach</a></li>
+                        <li><a href="impact.html">Impact</a></li>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="partner.html">Partner With Us</a></li>
+                        <li><a href="start a chapter.html">Start a Chapter</a></li>
+                        <li><a href="contact us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Apex Rise. All rights reserved. | Empowering rural India one child at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('brochureRequestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to your server
+            // For this example, we'll just show an alert
+            alert('Thank you for your request! We will process it and mail the materials to you shortly.');
+            
+            // Reset the form
+            this.reset();
+        });
+        
+        // This would be replaced with actual download functionality
+        document.querySelectorAll('.btn-primary[download]').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                // In a real implementation, this would trigger the file download
+                alert('Download would start now. In a real implementation, this would trigger the file download.');
+            });
+        });
+    </script>
+</body>
+</html>
